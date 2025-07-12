@@ -1,22 +1,40 @@
+import { Navbar } from "@/components/common/navbar"
+import { HeroSection } from "@/components/sections/hero"
+import { AboutSection } from "@/components/sections/about"
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
-        <h1 className="mb-8 text-center text-4xl font-bold">
-          Jerry Safter Brown
-        </h1>
-        <p className="text-center text-xl text-muted-foreground">
-          Technical Product Engineer
-        </p>
-        <p className="mt-4 text-center text-muted-foreground">
-          Building scalable solutions that drive business impact
-        </p>
-        <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            🚧 Site under construction - Coming soon! 🚧
-          </p>
-        </div>
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <main id="main">
+        <HeroSection />
+        <AboutSection />
+        {/* Placeholder sections */}
+        <section id="experience" className="py-20 px-4 bg-muted/50">
+          <div className="container mx-auto max-w-6xl text-center">
+            <h2 className="text-3xl font-bold mb-4">Experience</h2>
+            <p className="text-muted-foreground">Coming soon...</p>
+          </div>
+        </section>
+        <section id="projects" className="py-20 px-4">
+          <div className="container mx-auto max-w-6xl text-center">
+            <h2 className="text-3xl font-bold mb-4">Projects</h2>
+            <p className="text-muted-foreground">Coming soon...</p>
+          </div>
+        </section>
+        <section id="skills" className="py-20 px-4 bg-muted/50">
+          <div className="container mx-auto max-w-6xl text-center">
+            <h2 className="text-3xl font-bold mb-4">Skills</h2>
+            <p className="text-muted-foreground">Coming soon...</p>
+          </div>
+        </section>
+        <section id="contact" className="py-20 px-4">
+          <div className="container mx-auto max-w-6xl text-center">
+            <h2 className="text-3xl font-bold mb-4">Contact</h2>
+            <p className="text-muted-foreground">Coming soon...</p>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }

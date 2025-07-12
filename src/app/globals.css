@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -23,7 +24,51 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
+    
+    /* Radius */
     --radius: 0.5rem;
+    
+    /* Typography */
+    --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono Variable', 'Fira Code', monospace;
+    
+    /* Font Sizes - Responsive */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+    --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 3.5rem);
+    --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+    
+    /* Spacing Scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Animation */
+    --animate-duration-fast: 150ms;
+    --animate-duration-normal: 300ms;
+    --animate-duration-slow: 500ms;
+    --animate-easing-default: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --animate-easing-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --animate-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Z-index Scale */
+    --z-base: 0;
+    --z-dropdown: 10;
+    --z-sticky: 20;
+    --z-fixed: 30;
+    --z-modal-backdrop: 40;
+    --z-modal: 50;
+    --z-popover: 60;
+    --z-tooltip: 70;
   }
 
   .dark {
@@ -53,7 +98,110 @@
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Focus visible styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  /* Responsive typography */
+  h1 {
+    font-size: var(--text-5xl);
+    @apply font-bold leading-tight tracking-tight;
+  }
+  
+  h2 {
+    font-size: var(--text-4xl);
+    @apply font-bold leading-tight;
+  }
+  
+  h3 {
+    font-size: var(--text-3xl);
+    @apply font-semibold leading-tight;
+  }
+  
+  h4 {
+    font-size: var(--text-2xl);
+    @apply font-semibold;
+  }
+  
+  h5 {
+    font-size: var(--text-xl);
+    @apply font-medium;
+  }
+  
+  h6 {
+    font-size: var(--text-lg);
+    @apply font-medium;
+  }
+  
+  p {
+    font-size: var(--text-base);
+    @apply leading-relaxed;
+  }
+  
+  /* Code blocks */
+  code {
+    font-family: var(--font-mono);
+    @apply rounded bg-muted px-1 py-0.5 text-sm;
+  }
+  
+  pre {
+    @apply overflow-x-auto rounded-lg bg-muted p-4;
+  }
+  
+  pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Animation utilities */
+  .animate-fast {
+    animation-duration: var(--animate-duration-fast);
+  }
+  
+  .animate-normal {
+    animation-duration: var(--animate-duration-normal);
+  }
+  
+  .animate-slow {
+    animation-duration: var(--animate-duration-slow);
+  }
+  
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
   }
 }
