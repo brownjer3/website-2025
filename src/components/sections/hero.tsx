@@ -1,3 +1,6 @@
+"use client"
+
+import * as React from "react"
 import Link from "next/link"
 import { ArrowDown, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -7,13 +10,35 @@ interface HeroStat {
   label: string
 }
 
-const stats: HeroStat[] = [
-  { value: "10+", label: "Years in Tech" },
-  { value: "30K+", label: "Daily Active Users" },
-  { value: "15+", label: "Projects Shipped" },
-]
-
 export function HeroSection() {
+  const [githubCommits, setGithubCommits] = React.useState<string>("2.5K+")
+  
+  React.useEffect(() => {
+    const fetchGitHubStats = async () => {
+      try {
+        const response = await fetch('/api/github/stats')
+        if (response.ok) {
+          const data = await response.json()
+          // Format the number nicely
+          if (data.totalCommits >= 1000) {
+            setGithubCommits(`${(data.totalCommits / 1000).toFixed(1)}K+`)
+          } else {
+            setGithubCommits(`${data.totalCommits}+`)
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch GitHub stats:', error)
+      }
+    }
+    
+    fetchGitHubStats()
+  }, [])
+  
+  const stats: HeroStat[] = [
+    { value: "10+", label: "Years in Tech" },
+    { value: githubCommits, label: "GitHub Commits" },
+    { value: "15+", label: "Projects Shipped" },
+  ]
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-4">
       {/* Background gradient */}
@@ -31,19 +56,19 @@ export function HeroSection() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Jerry Safter Brown
+                Jerry.
               </span>
             </h1>
             <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-muted-foreground">
-              Technical Product Engineer
+              Full Stack Software Engineer
             </p>
           </div>
           
           {/* Description */}
           <p className="max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            Building scalable solutions that drive business impact. 
-            I bridge the gap between technical excellence and product vision, 
-            delivering production-ready features that users love.
+            Product-minded Full Stack Engineer with 10 years in tech. 
+            I combine deep technical expertise in React and TypeScript with a unique product perspective 
+            to deliver high-impact features that drive business outcomes.
           </p>
           
           {/* Stats */}

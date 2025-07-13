@@ -15,57 +15,71 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: "stickk",
-    company: "stickK",
-    role: "Senior Software Engineer",
+    id: "bluepine",
+    company: "Bluepine",
+    role: "Full-Stack Software Engineer",
     period: {
-      start: "March 2024",
+      start: "April 2024",
       end: "Present"
     },
-    location: "Remote",
-    description: "Leading development of AI-powered features and scaling infrastructure for behavior change platform with 2M+ users.",
+    location: "Chicago, IL (Hybrid)",
+    description: "Driving revenue generation and strategic product development for property management platform.",
     achievements: [
-      "Architected and deployed AI goal-setting features, increasing user engagement by 40%",
-      "Reduced API response times from 2s to 200ms through database optimization",
-      "Built ML pipeline for personalized recommendations serving 30K+ daily active users",
-      "Led migration to microservices architecture, improving deployment frequency by 3x"
+      "Enabled revenue generation by architecting and implementing complete Stripe billing infrastructure and onboarding systems, supporting 100% of customers",
+      "Influenced strategic pivot through 6 months of direct collaboration with operations team, developing functional prototypes that shaped executive decision",
+      "Built business-critical data infrastructure including automated pipelines, analytics dashboards, and reporting systems driving executive decision-making",
+      "Delivered beyond engineering scope by proactively developing Interactive User Map, Automated Slack Bots, Bug Report System, and iOS room scan app",
+      "Led cross-functional product development partnering with leadership to define Admin functionalities including sales funnel tracking and revenue forecasting"
     ],
-    technologies: ["Python", "React", "TypeScript", "AWS", "PostgreSQL", "Redis", "Docker", "AI/ML"]
+    technologies: ["TypeScript", "React", "Next.js", "Node.js", "tRPC", "Prisma ORM", "MySQL", "Redis", "Stripe", "Vercel"]
+  },
+  {
+    id: "stickk",
+    company: "stickK",
+    role: "Full-Stack Software Engineer",
+    period: {
+      start: "February 2023",
+      end: "April 2024"
+    },
+    location: "Los Angeles, CA (Remote)",
+    description: "Modernized legacy infrastructure and pioneered AI features for behavior change platform.",
+    achievements: [
+      "Modernized legacy infrastructure by updating 30 legacy API endpoints, improving response times by 40%",
+      "Empowered enterprise clients through admin dashboards with real-time analytics and custom reporting",
+      "Inspired product vision by integrating various OpenAI APIs to create 6 internal feature prototypes"
+    ],
+    technologies: ["JavaScript", "React", "Node.js", "Python", "MySQL", "Redis", "OpenAI API", "REST APIs"]
   },
   {
     id: "freelance",
-    company: "Freelance Consultant",
-    role: "Full Stack Developer",
+    company: "Freelance",
+    role: "Full-Stack Software Engineer",
     period: {
-      start: "January 2023",
-      end: "March 2024"
+      start: "October 2020",
+      end: "February 2023"
     },
-    location: "Remote",
-    description: "Delivered high-impact solutions for startups and enterprises, focusing on scalable web applications.",
+    location: "Los Angeles, CA (Remote)",
+    description: "Founded analytics platform and delivered custom solutions for emerging tech companies.",
     achievements: [
-      "Built MVP for fintech startup that secured $500K in seed funding",
-      "Optimized e-commerce platform, increasing conversion rate by 25%",
-      "Developed custom CRM system handling 100K+ daily transactions",
-      "Mentored 5 junior developers on best practices and system design"
+      "Founded analytics platform for an emerging NFT marketplace, building a team and web app from scratch",
+      "Drove project success by architecting elegant, custom web applications for the Crypto/NFT space"
     ],
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "AWS", "Stripe", "GraphQL", "Tailwind CSS"]
+    technologies: ["JavaScript", "React", "Node.js", "PostgreSQL", "Web3", "Analytics", "NFT"]
   },
   {
-    id: "previous",
-    company: "Previous Experience",
-    role: "Product Manager → Engineer",
+    id: "stickk-pm",
+    company: "stickK",
+    role: "Product Manager",
     period: {
-      start: "2014",
-      end: "2022"
+      start: "May 2017",
+      end: "October 2020"
     },
-    location: "San Francisco, CA",
-    description: "Transitioned from product management to engineering, bringing unique perspective to technical solutions.",
+    location: "Brooklyn, NY (Remote)",
+    description: "Drove product strategy and began transition to engineering through hands-on technical contributions.",
     achievements: [
-      "Led product strategy for features impacting 1M+ users",
-      "Self-taught programming and built production features within 6 months",
-      "Bridged communication between technical and business teams",
-      "Established data-driven decision making culture"
+      "Generated new revenue stream by launching a self-serve product, scaling to 1,000 users within six months",
+      "Reduced operational burden by 35% through building a comprehensive Help Center in JavaScript"
     ],
-    technologies: ["JavaScript", "React", "Python", "SQL", "Analytics", "A/B Testing", "Agile"]
+    technologies: ["JavaScript", "HTML", "CSS", "Analytics", "Product Management", "Agile"]
   }
 ]

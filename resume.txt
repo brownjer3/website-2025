@@ -1,0 +1,49 @@
+Jerry Safter-Brown
+Chicago, IL | 7084469177 | brownjer3@gmail.com
+Website | Github | LinkedIn
+
+SUMMARY
+Product-minded Full-Stack Software Engineer with 10 years in tech, including 5 years building scalable web
+applications. Combines deep technical expertise in Next.js and TypeScript with product management experience to
+deliver high-impact features that drive business outcomes. Known for proactively identifying business gaps and
+building solutions that enable revenue generation, strategic decision-making, and operational efficiency. Excels at
+bridging engineering, product, and operations to shape company direction while maintaining technical excellence.
+
+TECHNICAL SKILLS
+Languages: TypeScript, JavaScript, Python, SQL, HTML, CSS
+Frontend: React, Next.js, Redux, React Query, React Hook Form, Chakra UI, TailwindCSS
+Backend: Node.js, tRPC, Prisma ORM, MySQL, Redis, REST APIs
+Tools & Platforms: Claude Code, Git, Vercel, GitHub Actions, Stripe, Twilio, SendGrid, OpenAI, Airtable, Zapier
+
+EXPERIENCE
+Bluepine Chicago, IL Hybrid
+Full-Stack Software Engineer April 2024 – Present
+● Enabled revenue generation by architecting and implementing complete Stripe billing infrastructure and
+onboarding systems, supporting 100% of customers and establishing foundation for company monetization.
+● Influenced strategic pivot through 6 months of direct collaboration with operations team, developing
+functional prototypes that shaped executive decision to focus on Home Manager experience as core product.
+● Built business-critical data infrastructure including automated pipelines, analytics dashboards, and reporting
+systems that continue to drive executive decision-making and operational efficiency.
+● Delivered beyond engineering scope by proactively developing tools on own initiative: Interactive User Map,
+Automated Slack Bots, Bug Report System, and iOS room scan app - inspiring future platform capabilities.
+● Led cross-functional product development partnering with leadership to define and prototype Admin
+functionalities, including sales funnel tracking, revenue forecasting, and time tracking dashboards.
+● Maintained engineering excellence while balancing sprint commitments with operations support, customer
+communications, and strategic planning - consistently delivering elegant, user-focused solutions.
+stickK Los Angeles, CA Remote
+Full-Stack Software Engineer February 2023 – April 2024
+● Modernized legacy infrastructure by updating 30 legacy API endpoints, improving response times by 40%.
+● Empowered enterprise clients through admin dashboards with real-time analytics and custom reporting.
+● Inspired product vision by integrating various OpenAI APIs to create 6 internal feature prototypes.
+Freelance Los Angeles, CA Remote
+Full-Stack Software Engineer October 2020 – February 2023
+● Founded analytics platform for an emerging NFT marketplace, building a team and web app from scratch.
+● Drove project success by architecting elegant, custom web applications for the Crypto/NFT space.
+stickK Brooklyn, NY Remote
+Product Manager May 2017 – October 2020
+● Generated new revenue stream by launching a self-serve product, scaling to 1,000 users within six months.
+● Reduced operational burden by 35% through building a comprehensive Help Center in JavaScript.
+
+EDUCATION
+Flatiron School, Full-Stack Software Engineering Bootcamp October 2020 – April 2021 Remote
+Grinnell College, Bachelor of Arts, Economics May 2014 Grinnell, IA

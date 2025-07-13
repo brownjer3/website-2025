@@ -21,7 +21,7 @@ export function AboutSection() {
             
             <div className="space-y-4 text-muted-foreground">
               <p className="text-lg leading-relaxed">
-                I&apos;m a <span className="text-foreground font-semibold">Technical Product Engineer</span> with 
+                I&apos;m a <span className="text-foreground font-semibold">Full Stack Software Engineer</span> with 
                 over 10 years of experience building products that solve real business problems. 
                 My unique background combines deep technical expertise with a product-focused mindset.
               </p>

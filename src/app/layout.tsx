@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Jerry Safter Brown - Technical Product Engineer',
-  description: 'Technical Product Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
+  title: 'Jerry Safter Brown - Full Stack Software Engineer',
+  description: 'Full Stack Software Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
   keywords: ['software engineer', 'product engineer', 'full stack developer', 'react', 'typescript', 'nextjs'],
   authors: [{ name: 'Jerry Safter Brown' }],
   creator: 'Jerry Safter Brown',
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://jerrysafterbrown.com',
     siteName: 'Jerry Safter Brown',
-    title: 'Jerry Safter Brown - Technical Product Engineer',
-    description: 'Technical Product Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
+    title: 'Jerry Safter Brown - Full Stack Software Engineer',
+    description: 'Full Stack Software Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jerry Safter Brown - Technical Product Engineer',
-    description: 'Technical Product Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
+    title: 'Jerry Safter Brown - Full Stack Software Engineer',
+    description: 'Full Stack Software Engineer with 10+ years in tech, building scalable solutions that drive business impact.',
   },
   robots: {
     index: true,

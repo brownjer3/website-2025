@@ -27,7 +27,7 @@ export function Footer() {
               JSB
             </Link>
             <p className="text-sm text-muted-foreground">
-              Technical Product Engineer building scalable solutions that drive business impact.
+              Full Stack Software Engineer building scalable solutions that drive business impact.
             </p>
           </div>
 

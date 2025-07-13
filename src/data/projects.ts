@@ -28,30 +28,29 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "ai-goal-platform",
-    title: "AI-Powered Goal Setting Platform",
-    subtitle: "Intelligent behavior change system",
-    period: "March 2024 - Present",
+    id: "stripe-billing-system",
+    title: "Complete Stripe Billing Infrastructure",
+    subtitle: "Revenue-enabling payment system",
+    period: "April 2024 - Present",
     status: "production",
     featured: true,
     metrics: {
-      users: "30K+ daily active",
-      performance: "200ms response time",
-      impact: "40% engagement increase",
-      scale: "2M+ goals created"
+      users: "100% of customers",
+      impact: "Enabled monetization",
+      performance: "99.9% uptime",
+      scale: "Foundation for growth"
     },
     star: {
-      situation: "Users struggled with setting effective goals, leading to 60% abandonment rate",
-      task: "Build an AI system that guides users through personalized goal creation",
-      action: "Developed LLM-powered recommendation engine with custom fine-tuning on successful goal patterns. Implemented real-time suggestion API with Redis caching for sub-200ms responses",
-      result: "Reduced goal abandonment by 40%, increased completion rates by 25%, and improved user retention by 3x"
+      situation: "Company needed to monetize platform but lacked any billing infrastructure or payment processing",
+      task: "Build complete billing system from scratch to enable revenue generation",
+      action: "Architected and implemented Stripe integration with subscription management, payment processing, invoice generation, and customer portal. Built onboarding flow with KYC compliance",
+      result: "Enabled company to start generating revenue, supporting 100% of customers with automated billing and establishing foundation for scale"
     },
-    technologies: ["Python", "OpenAI API", "Redis", "PostgreSQL", "React", "TypeScript", "AWS Lambda"],
+    technologies: ["TypeScript", "Stripe API", "Next.js", "tRPC", "Prisma", "MySQL", "React"],
     links: {
-      live: "https://stickk.com",
-      caseStudy: "#"
+      live: "https://bluepineapp.com"
     },
-    category: "ml"
+    category: "web"
   },
   {
     id: "fintech-mvp",
