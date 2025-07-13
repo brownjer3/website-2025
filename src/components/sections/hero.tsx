@@ -37,7 +37,6 @@ export function HeroSection() {
   const stats: HeroStat[] = [
     { value: "10+", label: "Years in Tech" },
     { value: githubCommits, label: "GitHub Commits" },
-    { value: "15+", label: "Projects Shipped" },
   ]
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-4">

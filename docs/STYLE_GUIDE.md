@@ -48,21 +48,24 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-// 2. Types/Interfaces
-interface ComponentProps {
-  title: string
+import type { UserProfile } from '@/types'
+
+// 2. Type definitions
+interface Props {
+  user: UserProfile
+  onUpdate: (user: UserProfile) => void
 }
 
-// 3. Constants
-const ANIMATION_DURATION = 300
-
-// 4. Component
-export function Component({ title }: ComponentProps) {
+// 3. Component/Function
+export function ProfileCard({ user, onUpdate }: Props) {
   // Implementation
 }
 
-// 5. Helper functions
-function helperFunction() {}
+// 4. Subcomponents (if any)
+function ProfileAvatar() {}
+
+// 5. Utilities (if any)
+function formatUserName() {}
 ```
 
 ### React/Next.js
@@ -71,24 +74,24 @@ function helperFunction() {}
 
 ```typescript
 // Prefer function declarations for components
-export function ProfileCard({ user }: ProfileCardProps) {
+export function ComponentName() {
   // 1. Hooks
+  const [state, setState] = useState()
   const router = useRouter()
-  const [isOpen, setIsOpen] = useState(false)
-  
+
   // 2. Derived state
-  const fullName = `${user.firstName} ${user.lastName}`
-  
+  const isActive = state === 'active'
+
   // 3. Effects
   useEffect(() => {
     // Effect logic
-  }, [dependency])
-  
+  }, [])
+
   // 4. Handlers
   const handleClick = () => {
-    setIsOpen(!isOpen)
+    // Handler logic
   }
-  
+
   // 5. Render
   return (
     <div>
@@ -98,253 +101,326 @@ export function ProfileCard({ user }: ProfileCardProps) {
 }
 ```
 
-#### Props Interface
-
-```typescript
-// Always define props interface above component
-interface ButtonProps {
-  variant?: 'primary' | 'secondary'
-  size?: 'sm' | 'md' | 'lg'
-  children: React.ReactNode
-  onClick?: () => void
-}
-
-export function Button({ 
-  variant = 'primary',
-  size = 'md',
-  children,
-  onClick 
-}: ButtonProps) {
-  // Implementation
-}
-```
+#### Hooks Rules
+- Custom hooks start with 'use'
+- Keep hooks at the top level
+- Follow Rules of Hooks
 
 ### CSS/Tailwind
 
 #### Class Organization
 
-```typescript
+```tsx
 // Use cn() utility for conditional classes
-import { cn } from '@/lib/utils'
-
 <div 
   className={cn(
     // Base classes
     "flex items-center justify-center",
-    // Spacing
-    "p-4 m-2",
-    // Typography
-    "text-sm font-medium",
-    // Colors
-    "bg-white text-gray-900",
-    // Dark mode
-    "dark:bg-gray-900 dark:text-white",
-    // States
-    "hover:bg-gray-50 focus:outline-none",
-    // Responsive
-    "md:p-6 lg:text-base",
-    // Conditional
-    isActive && "bg-blue-500 text-white"
+    // Responsive classes
+    "px-4 md:px-6 lg:px-8",
+    // State classes
+    "hover:bg-gray-100 focus:outline-none",
+    // Dark mode classes
+    "dark:bg-gray-800 dark:hover:bg-gray-700",
+    // Conditional classes
+    isActive && "bg-blue-500 text-white",
+    className // Allow className prop override
   )}
 />
 ```
 
-#### Component Styling Pattern
+#### Tailwind Best Practices
+1. **Mobile-first**: Start with mobile styles, add responsive modifiers
+2. **Consistent spacing**: Use Tailwind's spacing scale (4, 8, 12, 16, etc.)
+3. **Color usage**: Use semantic color names from CSS variables
+4. **Avoid arbitrary values**: Prefer Tailwind utilities over `[123px]`
 
-```typescript
-// Define variant styles as objects
-const buttonVariants = {
-  base: "inline-flex items-center justify-center rounded-md font-medium transition-colors",
-  variants: {
-    primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-  },
-  sizes: {
-    sm: "h-9 px-3 text-sm",
-    md: "h-10 px-4",
-    lg: "h-11 px-8",
-  }
+### Design System
+
+#### Colors
+
+Our color system uses CSS variables that adapt to theme:
+
+```css
+/* Light mode colors (default) */
+--background: 0 0% 100%;
+--foreground: 222.2 84% 4.9%;
+--primary: 222.2 47.4% 11.2%;
+--secondary: 210 40% 96.1%;
+--accent: 210 40% 96.1%;
+--destructive: 0 84.2% 60.2%;
+--muted: 210 40% 96.1%;
+--card: 0 0% 100%;
+--popover: 0 0% 100%;
+--border: 214.3 31.8% 91.4%;
+--input: 214.3 31.8% 91.4%;
+--ring: 222.2 84% 4.9%;
+```
+
+Usage in Tailwind:
+```tsx
+<div className="bg-background text-foreground">
+  <button className="bg-primary text-primary-foreground">
+    Click me
+  </button>
+</div>
+```
+
+#### Typography
+
+```css
+/* Font sizes follow Tailwind's type scale */
+text-xs    // 0.75rem (12px)
+text-sm    // 0.875rem (14px)
+text-base  // 1rem (16px)
+text-lg    // 1.125rem (18px)
+text-xl    // 1.25rem (20px)
+text-2xl   // 1.5rem (24px)
+text-3xl   // 1.875rem (30px)
+text-4xl   // 2.25rem (36px)
+text-5xl   // 3rem (48px)
+```
+
+#### Spacing
+
+Follow 4px grid system:
+```css
+/* Common spacing values */
+p-1   // 4px
+p-2   // 8px
+p-3   // 12px
+p-4   // 16px
+p-6   // 24px
+p-8   // 32px
+p-12  // 48px
+p-16  // 64px
+```
+
+#### Shadows
+
+```css
+/* Use Tailwind's shadow utilities */
+shadow-sm     // Subtle shadow
+shadow        // Default shadow
+shadow-md     // Medium shadow
+shadow-lg     // Large shadow
+shadow-xl     // Extra large shadow
+```
+
+### Component Patterns
+
+#### Button Component
+
+```tsx
+// Primary button
+<Button>Click me</Button>
+
+// Secondary button
+<Button variant="secondary">Click me</Button>
+
+// Ghost button
+<Button variant="ghost">Click me</Button>
+
+// With icon
+<Button>
+  <Download className="mr-2 h-4 w-4" />
+  Download
+</Button>
+
+// Sizes
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+#### Form Controls
+
+```tsx
+// Input with label
+<div className="space-y-2">
+  <Label htmlFor="email">Email</Label>
+  <Input 
+    id="email" 
+    type="email" 
+    placeholder="Enter your email"
+  />
+</div>
+
+// Textarea
+<div className="space-y-2">
+  <Label htmlFor="message">Message</Label>
+  <Textarea 
+    id="message" 
+    placeholder="Enter your message"
+    rows={4}
+  />
+</div>
+```
+
+#### Cards and Sections
+
+```tsx
+// Section wrapper
+<section className="py-20 px-4">
+  <div className="container mx-auto max-w-6xl">
+    {/* Content */}
+  </div>
+</section>
+
+// Card pattern
+<div className="rounded-lg border bg-card p-6">
+  <h3 className="text-lg font-semibold">Title</h3>
+  <p className="text-muted-foreground">Description</p>
+</div>
+```
+
+### Animation Guidelines
+
+#### Transitions
+
+```tsx
+// Use Tailwind's transition utilities
+<div className="transition-colors hover:bg-gray-100">
+  Hover me
+</div>
+
+// Multiple properties
+<div className="transition-all duration-200 ease-in-out">
+  Smooth transitions
+</div>
+```
+
+#### Animation Classes
+
+```css
+/* Custom animations in tailwind.config.ts */
+animation: {
+  'accordion-down': 'accordion-down 0.2s ease-out',
+  'accordion-up': 'accordion-up 0.2s ease-out',
 }
 ```
 
-### File Naming
+### Accessibility
 
-```
-components/
-├── ui/
-│   ├── button.tsx          # Lowercase, singular
-│   └── dialog.tsx
-├── sections/
-│   ├── hero-section.tsx    # Kebab-case for multi-word
-│   └── project-grid.tsx
-└── features/
-    ├── command-palette/    # Feature folders
-    │   ├── index.tsx
-    │   └── command-palette-item.tsx
-    └── github-activity.tsx
-```
+#### ARIA Labels
 
-## Git Commit Conventions
+```tsx
+// Navigation
+<nav aria-label="Main navigation">
+  {/* Nav items */}
+</nav>
 
-### Commit Message Format
-
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
-```
-
-### Types
-
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation only
-- `style`: Code style changes (formatting, semicolons, etc)
-- `refactor`: Code change that neither fixes a bug nor adds a feature
-- `perf`: Performance improvements
-- `test`: Adding missing tests
-- `chore`: Changes to build process or auxiliary tools
-
-### Examples
-
-```bash
-feat(hero): add animated gradient background
-
-fix(nav): correct mobile menu z-index issue
-
-docs: update README with new setup instructions
-
-style: format all files with prettier
-
-refactor(api): extract GitHub service into separate module
-
-perf(images): implement lazy loading for project images
-```
-
-## Component Documentation
-
-### Component Comments
-
-```typescript
-/**
- * ProfileCard displays user information in a card format
- * 
- * @example
- * <ProfileCard 
- *   user={{
- *     name: "John Doe",
- *     role: "Developer",
- *     avatar: "/avatar.jpg"
- *   }}
- *   variant="compact"
- * />
- */
-export function ProfileCard({ user, variant = 'default' }: ProfileCardProps) {
-  // Implementation
-}
-```
-
-### Prop Documentation
-
-```typescript
-interface ProfileCardProps {
-  /** User object containing profile information */
-  user: {
-    /** Display name of the user */
-    name: string
-    /** Professional role or title */
-    role: string
-    /** URL to avatar image */
-    avatar?: string
-  }
-  /** Visual variant of the card */
-  variant?: 'default' | 'compact' | 'detailed'
-  /** Callback fired when card is clicked */
-  onClick?: () => void
-}
-```
-
-## Accessibility Guidelines
-
-### ARIA Labels
-
-```typescript
-// Always provide meaningful labels
-<button
-  aria-label="Open navigation menu"
-  aria-expanded={isOpen}
-  aria-controls="navigation-menu"
->
-  <MenuIcon />
+// Interactive elements
+<button aria-label="Close dialog">
+  <X className="h-4 w-4" />
 </button>
 
-// Use semantic HTML
-<nav aria-label="Main navigation">
-  <ul role="list">
-    <li>
-      <a href="/about">About</a>
-    </li>
-  </ul>
-</nav>
+// Form controls
+<input aria-label="Search" type="search" />
 ```
 
-### Focus Management
+#### Focus States
 
-```typescript
-// Visible focus indicators
-className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-
-// Keyboard navigation
-onKeyDown={(e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault()
-    handleAction()
-  }
-}}
+```tsx
+// Always visible focus indicators
+<button className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+  Click me
+</button>
 ```
 
-## Performance Guidelines
+#### Skip Links
 
-### Image Optimization
+```tsx
+// At the start of the page
+<SkipLinks />
+```
 
-```typescript
+### Dark Mode
+
+#### Implementation
+
+```tsx
+// Components should support both themes
+<div className="bg-white dark:bg-gray-900">
+  <p className="text-gray-900 dark:text-gray-100">
+    Adapts to theme
+  </p>
+</div>
+```
+
+#### Best Practices
+1. Test all components in both themes
+2. Ensure sufficient contrast in both modes
+3. Use semantic color variables
+4. Avoid hard-coded colors
+
+### Performance Guidelines
+
+#### Image Optimization
+
+```tsx
+// Use next/image for automatic optimization
 import Image from 'next/image'
 
-// Always use Next.js Image component
 <Image
   src="/hero-image.jpg"
-  alt="Descriptive alt text"
-  width={1200}
+  alt="Description"
+  width={800}
   height={600}
-  priority // For above-the-fold images
-  placeholder="blur"
-  blurDataURL={blurDataUrl}
+  priority // For above-fold images
 />
 ```
 
-### Component Optimization
+#### Code Splitting
 
-```typescript
-// Memoize expensive computations
-const expensiveValue = useMemo(() => {
-  return computeExpensiveValue(data)
-}, [data])
-
-// Prevent unnecessary re-renders
-const MemoizedComponent = memo(Component)
-
-// Lazy load heavy components
+```tsx
+// Dynamic imports for heavy components
 const HeavyComponent = dynamic(
-  () => import('./heavy-component'),
-  { 
-    loading: () => <Skeleton />,
-    ssr: false 
-  }
+  () => import('./HeavyComponent'),
+  { loading: () => <Skeleton /> }
 )
 ```
 
+#### Lazy Loading
+
+```tsx
+// Intersection Observer for below-fold content
+const { ref, inView } = useInView({
+  triggerOnce: true,
+  threshold: 0.1
+})
+
+<div ref={ref}>
+  {inView && <ExpensiveComponent />}
+</div>
+```
+
+### Git Commit Messages
+
+Follow conventional commits:
+
+```
+feat: add contact form validation
+fix: resolve mobile menu z-index issue
+docs: update README with new features
+style: format code with prettier
+refactor: extract common button styles
+test: add unit tests for form validation
+chore: update dependencies
+```
+
+### Code Review Checklist
+
+Before submitting PR:
+- [ ] TypeScript compiles without errors
+- [ ] ESLint passes
+- [ ] Prettier formatted
+- [ ] Mobile responsive
+- [ ] Dark mode tested
+- [ ] Accessibility checked
+- [ ] Performance considered
+- [ ] Browser tested (Chrome, Firefox, Safari)
+
 ---
 
-*Follow these guidelines to maintain consistency and quality across the codebase.*
+*Last updated: 2025-07-12*

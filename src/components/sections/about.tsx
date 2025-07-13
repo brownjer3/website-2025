@@ -1,10 +1,10 @@
 import { CheckCircle2 } from "lucide-react"
 
 const highlights = [
-  "Scaled platforms from 5K to 30K+ daily active users",
-  "Reduced API response times by 60% through optimization",
-  "Led cross-functional teams to ship 15+ production features",
-  "Built ML-powered features that increased user engagement by 40%",
+  "10+ years of experience building production software",
+  "Full-stack expertise in TypeScript, React, and Node.js",
+  "Product-minded approach to engineering decisions",
+  "Track record of delivering business value through code",
 ]
 
 export function AboutSection() {
@@ -29,7 +29,7 @@ export function AboutSection() {
               <p className="text-lg leading-relaxed">
                 I&apos;ve spent my career at the intersection of engineering and product, 
                 working with startups and established companies to ship features that move metrics. 
-                From architecting scalable systems to implementing ML-powered features, 
+                From architecting scalable systems to implementing complex features, 
                 I bring both strategic thinking and hands-on coding skills to every project.
               </p>
               
@@ -87,8 +87,8 @@ export function AboutSection() {
                       <span className="text-green-600 dark:text-green-400"> &quot;years&quot;</span>,
                     </div>
                     <div>
-                      <span className="text-muted-foreground">impact:</span>
-                      <span className="text-green-600 dark:text-green-400"> &quot;30K+ users daily&quot;</span>
+                      <span className="text-muted-foreground">focus:</span>
+                      <span className="text-green-600 dark:text-green-400"> &quot;business impact&quot;</span>
                     </div>
                   </div>
                   <div className="text-muted-foreground">{"}"};</div>

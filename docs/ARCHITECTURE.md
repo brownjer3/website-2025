@@ -48,162 +48,270 @@ User Request → Next.js Router → Server Component
 ### Component Hierarchy
 
 ```
-app/
-├── layout.tsx (Root Layout)
-│   ├── Navbar (Common)
-│   ├── ThemeProvider (Feature)
-│   └── Footer (Common)
-└── page.tsx (Page Component)
-    ├── HeroSection
-    ├── ExperienceSection
-    ├── ProjectsSection
-    ├── SkillsSection
-    └── ContactSection
+App Layout (Theme Provider)
+│
+├── Navigation
+│   ├── Desktop Nav
+│   └── Mobile Menu
+│
+├── Page Sections
+│   ├── Hero (Client - GitHub API)
+│   ├── About (Server)
+│   ├── Experience (Server)
+│   ├── Projects (Server) 
+│   ├── Skills (Server)
+│   └── Contact (Client - Form)
+│
+└── Footer
 ```
 
 ### Component Categories
 
 1. **UI Components** (`/components/ui/`)
-   - Atomic, reusable components from shadcn/ui
-   - Examples: Button, Card, Dialog, Input
+   - Pure presentation components from shadcn/ui
+   - Highly reusable, no business logic
+   - Examples: Button, Badge, Input, Tabs
 
 2. **Section Components** (`/components/sections/`)
    - Page-specific sections
-   - Compose UI components
-   - Handle section-level state
+   - Contain business logic and data
+   - Examples: HeroSection, ExperienceSection
 
-3. **Feature Components** (`/components/features/`)
-   - Complex, cross-cutting features
-   - Examples: CommandPalette, GitHubActivity
-
-4. **Common Components** (`/components/common/`)
+3. **Common Components** (`/components/common/`)
    - Shared across pages
-   - Examples: Navbar, Footer, SEO
+   - Examples: Navbar, Footer, SkipLinks
+
+4. **Feature Components** (`/components/features/`)
+   - Complex interactive features
+   - Examples: ThemeToggle, CommandPalette (planned)
+
+5. **Provider Components** (`/components/providers/`)
+   - React Context providers
+   - Examples: ThemeProvider
 
 ## State Management
 
-### State Hierarchy
+### Current Implementation
 
-1. **URL State** - Navigation, filters, search params
-2. **Server State** - Data from APIs, cached appropriately
-3. **UI State** - Theme, modals, temporary UI states
-4. **Form State** - Managed by form libraries
+1. **Theme State**: next-themes with localStorage persistence
+2. **Navigation State**: React useState for mobile menu
+3. **Form State**: Controlled components with React state
+4. **Data Fetching**: 
+   - Static data imported from `/data` files
+   - Dynamic GitHub stats via API route
 
-### State Solutions
+### Future Considerations
 
-- **URL State**: Next.js router, searchParams
-- **Server State**: React Server Components + fetch caching
-- **UI State**: React Context (Theme), useState (local)
-- **Form State**: React Hook Form (when needed)
+- Consider Zustand for complex client state
+- React Query for API data caching
+- Form library (React Hook Form) for complex forms
+
+## API Architecture
+
+### Current API Routes
+
+```
+/api/github/stats
+├── Purpose: Fetch GitHub statistics
+├── Method: GET
+├── Caching: 1 hour
+└── Response: { totalCommits, totalRepos, followers, following }
+```
+
+### API Design Principles
+
+1. **RESTful conventions**
+2. **Proper error handling with fallbacks**
+3. **Response caching for performance**
+4. **Optional authentication support**
+5. **TypeScript interfaces for all responses**
 
 ## Performance Architecture
 
 ### Optimization Strategies
 
 1. **Code Splitting**
-   - Route-based splitting (automatic with App Router)
-   - Component lazy loading for heavy features
-   - Dynamic imports for optional functionality
+   - Automatic with Next.js App Router
+   - Dynamic imports for heavy components
 
-2. **Asset Optimization**
-   - Next/Image for automatic image optimization
-   - Font subsetting and variable fonts
-   - SVG optimization and sprites
+2. **Image Optimization**
+   - Use next/image (TODO)
+   - WebP format with fallbacks
+   - Responsive image sizes
 
-3. **Caching Strategy**
-   - Static generation for content pages
-   - ISR for blog posts
-   - Client-side caching for GitHub API
+3. **Font Optimization**
+   - Geist font with Next.js font optimization
+   - Preload critical fonts
+   - Font-display: swap
+
+4. **Caching Strategy**
+   - Static pages cached at edge
+   - API responses cached for 1 hour
+   - Static assets with long cache headers
 
 ### Bundle Size Management
 
-```typescript
-// Example: Lazy load heavy components
-const CommandPalette = dynamic(
-  () => import('@/components/features/command-palette'),
-  { ssr: false }
-)
-```
+Current: ~200KB initial JS
+Target: <100KB initial JS
+
+Strategies:
+- Tree shaking with ES modules
+- Dynamic imports for below-fold content
+- Minimize third-party dependencies
+- Regular bundle analysis
 
 ## Security Architecture
 
-### Security Measures
+### Current Measures
 
-1. **Content Security Policy** - Strict CSP headers
-2. **Environment Variables** - Server-only secrets
-3. **Input Validation** - Zod schemas for all inputs
-4. **Rate Limiting** - API route protection
-5. **CORS Configuration** - Restrictive CORS policies
+1. **Content Security Policy** (TODO)
+2. **Environment Variables** for secrets
+3. **Input Validation** on forms
+4. **XSS Prevention** via React
+5. **HTTPS Only** via Vercel
 
-### API Security
+### Planned Enhancements
 
-```typescript
-// Example: API route with validation
-export async function POST(request: Request) {
-  // Rate limiting
-  const ip = request.headers.get('x-forwarded-for')
-  if (await isRateLimited(ip)) {
-    return new Response('Too Many Requests', { status: 429 })
-  }
-  
-  // Input validation
-  const body = await request.json()
-  const validated = contactSchema.parse(body)
-  
-  // Process request...
-}
-```
+1. Rate limiting on API routes
+2. CORS configuration
+3. Security headers via next.config.ts
+4. Form spam protection (honeypot/captcha)
 
 ## Deployment Architecture
 
-### Infrastructure
-
 ```
-GitHub → Vercel → Edge Network → Users
-  ↓
-CI/CD Pipeline
-  ↓
-- Type checking
-- Linting
-- Build
-- Deploy
+GitHub Repository
+      ↓
+Vercel Platform
+      ↓
+├── Production (main branch)
+├── Preview (PR branches)
+└── Development (local)
 ```
 
-### Environment Strategy
+### CI/CD Pipeline (Planned)
 
-- **Development**: Local development with hot reload
-- **Preview**: Branch deployments for testing
-- **Production**: Optimized builds on main branch
+```
+1. Pre-commit hooks (Husky)
+   - Linting
+   - Type checking
+   - Formatting
 
-## Monitoring & Analytics
+2. GitHub Actions
+   - Build verification
+   - Test execution
+   - Lighthouse CI
 
-### Monitoring Stack
+3. Vercel Deployment
+   - Automatic on push
+   - Preview on PR
+```
 
-1. **Vercel Analytics** - Web Vitals and performance
-2. **Plausible** - Privacy-focused user analytics
-3. **Sentry** - Error tracking and monitoring
-4. **Custom Metrics** - Business-specific KPIs
+## Technology Decisions
+
+### Why Next.js 15?
+- App Router for better performance
+- React Server Components support
+- Built-in optimizations
+- Excellent DX with hot reload
+- Vercel integration
+
+### Why TypeScript?
+- Type safety prevents bugs
+- Better IDE support
+- Self-documenting code
+- Refactoring confidence
+
+### Why Tailwind CSS?
+- Utility-first is performant
+- Consistent design system
+- Excellent responsive utilities
+- Dark mode support
+- Small production bundle
+
+### Why shadcn/ui?
+- Accessible by default
+- Customizable components
+- Copy/paste ownership
+- TypeScript support
+- Radix UI primitives
+
+## File Structure Conventions
+
+### Naming
+- Components: PascalCase (HeroSection.tsx)
+- Utilities: camelCase (formatDate.ts)
+- Types: PascalCase with "Type" suffix
+- Constants: SCREAMING_SNAKE_CASE
+
+### Organization
+```
+component-name/
+├── index.tsx        # Main component
+├── types.ts         # TypeScript types
+├── utils.ts         # Helper functions
+└── styles.module.css # Styles (if needed)
+```
+
+### Import Order
+1. React/Next imports
+2. Third-party libraries
+3. Internal components
+4. Internal utilities
+5. Types
+6. Styles
+
+## Testing Architecture (Planned)
+
+### Unit Testing
+- Vitest for component testing
+- React Testing Library for DOM
+- Mock Service Worker for API
+
+### E2E Testing
+- Playwright for browser automation
+- Test critical user paths
+- Visual regression testing
+
+### Testing Principles
+1. Test behavior, not implementation
+2. Focus on user interactions
+3. Mock external dependencies
+4. Maintain test coverage >80%
+
+## Monitoring Architecture (Planned)
 
 ### Performance Monitoring
+- Vercel Analytics for Web Vitals
+- Custom performance marks
+- Real User Monitoring (RUM)
 
-```typescript
-// Example: Custom performance tracking
-export function trackMetric(metric: string, value: number) {
-  if (typeof window !== 'undefined' && window.plausible) {
-    window.plausible('Performance', {
-      props: { metric, value }
-    })
-  }
-}
-```
+### Error Tracking
+- Sentry for error reporting
+- Custom error boundaries
+- Structured logging
+
+### Analytics
+- Plausible for privacy-focused analytics
+- Custom event tracking
+- Conversion tracking
 
 ## Future Architecture Considerations
 
-1. **Internationalization** - Multi-language support structure
-2. **A/B Testing** - Feature flag system
-3. **Search** - Full-text search implementation
-4. **CMS Integration** - Headless CMS for content
+### Potential Enhancements
+1. **Micro-frontends** for blog system
+2. **Edge Functions** for personalization
+3. **Service Worker** for offline support
+4. **WebAssembly** for heavy computations
+5. **Streaming SSR** for faster TTFB
+
+### Scalability Plan
+1. CDN for global distribution
+2. Database for dynamic content
+3. Redis for session/cache
+4. Queue system for emails
+5. Microservices for complex features
 
 ---
 
-*This architecture is designed to scale with the project while maintaining performance and developer experience.*
+*Last updated: 2025-07-12*
