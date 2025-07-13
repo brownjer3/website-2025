@@ -1,12 +1,6 @@
 import Link from "next/link"
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react"
-
-const socialLinks = [
-  { name: "GitHub", icon: Github, href: "https://github.com/brownjer3" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/jerrysafterbrown" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/jerrysafterbrown" },
-  { name: "Email", icon: Mail, href: "mailto:brownjer3@gmail.com" },
-]
+import { Heart } from "lucide-react"
+import { socialLinks } from "@/data/social-links"
 
 const quickLinks = [
   { name: "About", href: "#about" },
