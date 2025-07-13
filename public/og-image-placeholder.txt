@@ -1,0 +1,18 @@
+To generate the OG image:
+
+1. Visit http://localhost:3000/og-image-generator
+2. Take a screenshot of the page (1200x630px)
+3. Save as /public/og-image.jpg or /public/og-image.png
+4. Delete the /src/app/og-image-generator folder after
+
+Alternatively, use a tool like:
+- https://og-image.vercel.app/
+- https://bannerbear.com/
+- Figma/Canva to create a 1200x630px image
+
+The image should include:
+- Jerry Safter Brown (name)
+- Full Stack Software Engineer (title)
+- 10+ Years Experience
+- jerrysafterbrown.com (website)
+- Professional gradient background

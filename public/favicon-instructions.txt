@@ -1,0 +1,22 @@
+To generate favicons:
+
+1. Create a 512x512px icon with your initials "JSB" or "JB" with a modern design
+2. Use a tool like https://realfavicongenerator.net/ or https://favicon.io/
+
+Required files to generate:
+- favicon.ico (multi-size icon)
+- favicon-16x16.png
+- favicon-32x32.png
+- apple-touch-icon.png (180x180)
+- android-chrome-192x192.png
+- android-chrome-512x512.png
+
+Design suggestions:
+- Use gradient background matching website theme (purple/blue)
+- White or light text
+- Clean, modern typography
+
+Color scheme:
+- Background: #8b5cf6 to #3b82f6 gradient
+- Text: #ffffff
+- Or use dark background with light accent
