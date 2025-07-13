@@ -9,7 +9,7 @@ const highlights = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-12 sm:py-16 md:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -53,7 +53,7 @@ export function AboutSection() {
           
           {/* Visual Element */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5 p-8">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5 p-4 sm:p-6 md:p-8">
               <div className="space-y-6">
                 {/* Code snippet visual */}
                 <div className="font-mono text-sm space-y-2">
@@ -100,8 +100,8 @@ export function AboutSection() {
             </div>
             
             {/* Background decoration */}
-            <div className="absolute -z-10 -top-4 -right-4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute -z-10 -bottom-4 -left-4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute -z-10 -top-4 -right-4 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute -z-10 -bottom-4 -left-4 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 bg-primary/5 rounded-full blur-3xl" />
           </div>
         </div>
       </div>

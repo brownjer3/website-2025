@@ -39,24 +39,24 @@ export function SkillsSection() {
     return (
       <div
         className={cn(
-          "relative p-4 rounded-lg border bg-card transition-all duration-300",
+          "relative p-3 sm:p-4 rounded-lg border bg-card transition-all duration-300",
           "hover:shadow-md hover:border-primary/50",
           proficiency.bgColor
         )}
       >
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
-            <h4 className="font-medium">{skill.name}</h4>
+            <h4 className="font-medium text-sm sm:text-base">{skill.name}</h4>
             {skill.yearsExperience && (
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Calendar className="h-3 w-3" />
-                <span>{skill.yearsExperience}+ years</span>
+                <Calendar className="h-3 w-3 flex-shrink-0" />
+                <span className="truncate">{skill.yearsExperience}+ yrs</span>
               </div>
             )}
           </div>
           <Badge
             variant="outline"
-            className={cn("text-xs", proficiency.color)}
+            className={cn("text-xs px-2 py-0.5", proficiency.color)}
           >
             {proficiency.label}
           </Badge>
@@ -81,7 +81,7 @@ export function SkillsSection() {
   }
 
   return (
-    <section id="skills" className="py-20 px-4 bg-muted/50">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/50">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-2 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold">Skills & Technologies</h2>
@@ -120,18 +120,20 @@ export function SkillsSection() {
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           {/* Category Filter */}
           <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="flex-1">
-            <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6">
-              <TabsTrigger value="all">All</TabsTrigger>
-              {skillCategories.map((cat) => {
-                const Icon = iconMap[cat.icon as keyof typeof iconMap]
-                return (
-                  <TabsTrigger key={cat.value} value={cat.value} className="text-xs">
-                    <Icon className="h-3 w-3 mr-1" />
-                    {cat.label}
-                  </TabsTrigger>
-                )
-              })}
-            </TabsList>
+            <div className="w-full overflow-x-auto pb-2">
+              <TabsList className="flex w-max sm:grid sm:w-full sm:grid-cols-6">
+                <TabsTrigger value="all" className="min-w-[80px] sm:min-w-0">All</TabsTrigger>
+                {skillCategories.map((cat) => {
+                  const Icon = iconMap[cat.icon as keyof typeof iconMap]
+                  return (
+                    <TabsTrigger key={cat.value} value={cat.value} className="text-xs min-w-[100px] sm:min-w-0 flex items-center">
+                      <Icon className="h-3 w-3 mr-1 flex-shrink-0" />
+                      <span className="whitespace-nowrap">{cat.label}</span>
+                    </TabsTrigger>
+                  )
+                })}
+              </TabsList>
+            </div>
           </Tabs>
 
           {/* Proficiency Filter */}
@@ -150,7 +152,7 @@ export function SkillsSection() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
           {filteredSkills.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
           ))}

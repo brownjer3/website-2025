@@ -60,7 +60,7 @@ export function ProjectsSection() {
           isExpanded && "ring-2 ring-primary"
         )}
       >
-        <div className="p-6 space-y-4">
+        <div className="p-4 sm:p-5 md:p-6 space-y-4">
           {/* Header */}
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-4">
@@ -159,7 +159,7 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-2 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold">Projects</h2>
@@ -171,13 +171,15 @@ export function ProjectsSection() {
 
         {/* Category Filter */}
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
-          <TabsList className="grid w-full max-w-xl mx-auto grid-cols-5">
-            {categories.map((cat) => (
-              <TabsTrigger key={cat.value} value={cat.value}>
-                {cat.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="w-full overflow-x-auto pb-2">
+            <TabsList className="flex w-max mx-auto sm:grid sm:w-full sm:max-w-xl sm:grid-cols-5">
+              {categories.map((cat) => (
+                <TabsTrigger key={cat.value} value={cat.value} className="min-w-[100px] sm:min-w-0">
+                  {cat.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
         </Tabs>
 
         {/* Featured Projects */}

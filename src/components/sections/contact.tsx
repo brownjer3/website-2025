@@ -104,7 +104,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-2 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold">Get In Touch</h2>
@@ -232,7 +232,7 @@ export function ContactSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+                    className="flex items-center gap-3 p-3 sm:p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
                   >
                     <link.icon className="h-5 w-5 text-primary" />
                     <div>
@@ -247,7 +247,7 @@ export function ContactSection() {
             </div>
 
             {/* Additional Info */}
-            <div className="p-6 rounded-lg bg-muted/50">
+            <div className="p-4 sm:p-5 md:p-6 rounded-lg bg-muted/50">
               <h4 className="font-semibold mb-2">Looking for collaboration on:</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">

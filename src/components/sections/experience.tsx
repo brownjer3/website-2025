@@ -9,7 +9,7 @@ export function ExperienceSection() {
   const [hoveredId, setHoveredId] = React.useState<string | null>(null)
 
   return (
-    <section id="experience" className="py-20 px-4 bg-muted/50">
+    <section id="experience" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/50">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-2 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold">Experience</h2>
@@ -49,7 +49,7 @@ export function ExperienceSection() {
                   index % 2 === 0 ? "" : "md:col-start-2"
                 )}>
                   <div className={cn(
-                    "bg-card p-6 rounded-lg border transition-all duration-300",
+                    "bg-card p-4 sm:p-5 md:p-6 rounded-lg border transition-all duration-300",
                     hoveredId === exp.id ? "shadow-lg border-primary/50" : ""
                   )}>
                     {/* Header */}
