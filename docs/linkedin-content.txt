@@ -1,0 +1,159 @@
+Jerry Brown
+ Add verification badge
+Software Engineer at Bluepine
+Bluepine
+
+Flatiron School
+
+About
+Product-minded Full-Stack Software Engineer with 10+ years in tech, including 5+ years building scalable web applications. Combines deep technical expertise in Next.js and TypeScript with product management experience to deliver high-impact features that drive business outcomes. Known for proactively identifying business gaps and building solutions that enable revenue generation, strategic decision-making, and operational efficiency. Excels at bridging engineering, product, and operations to shape company direction while maintaining technical excellence.Product-minded Full-Stack Software Engineer with 10+ years in tech, including 5+ years building scalable web applications. Combines deep technical expertise in Next.js and TypeScript with product management experience to deliver high-impact features that drive business outcomes. Known for proactively identifying business gaps and building solutions that enable revenue generation, strategic decision-making, and operational efficiency. Excels at bridging engineering, product, and operations to shape company direction while maintaining technical excellence.…see more
+
+Experience
+
+Bluepine logo
+Software Engineer
+Software Engineer
+Bluepine · Full-timeBluepine · Full-time
+Apr 2024 - Present · 1 yr 4 mosApr 2024 to Present · 1 yr 4 mos
+Chicago, Illinois, United States · HybridChicago, Illinois, United States · Hybrid
+React.js, Next.js and +3 skills
+stickK logo
+Software Engineer
+Software Engineer
+stickK · Full-timestickK · Full-time
+Feb 2023 - Apr 2024 · 1 yr 3 mosFeb 2023 to Apr 2024 · 1 yr 3 mos
+Los Angeles, California, United States · RemoteLos Angeles, California, United States · Remote
+JavaScript, PHP and +3 skills
+Software Engineer
+Software Engineer
+Software Engineer
+FreelanceFreelance
+Apr 2021 - Feb 2023 · 1 yr 11 mosApr 2021 to Feb 2023 · 1 yr 11 mos
+RemoteRemote
+Led web development efforts for various web3 projects including an NFT collection minting website, a Shopify E-commerce storefront for custom NFT merchandise, and a rarity analysis tool for an emerging NFT marketplace.Led web development efforts for various web3 projects including an NFT collection minting website, a Shopify E-commerce storefront for custom NFT merchandise, and a rarity analysis tool for an emerging NFT marketplace.…see more
+React.js, Next.js and +1 skill
+Professional development
+Professional development
+Career BreakCareer Break
+Oct 2020 - Apr 2021 · 7 mosOct 2020 to Apr 2021 · 7 mos
+Flatiron School's Full-Stack Software Engineering BootcampFlatiron School's Full-Stack Software Engineering Bootcamp
+
+Flatiron Certificate of CompletionFlatiron Certificate of Completion
+stickK logo
+stickK
+stickK
+Full-time · 3 yrs 6 mosFull-time · 3 yrs 6 mos
+Brooklyn, NYBrooklyn, NY
+Product Manager
+Product Manager
+Jul 2018 - Oct 2020 · 2 yrs 4 mosJul 2018 to Oct 2020 · 2 yrs 4 mos
+At stickK, I oversaw all Web, iOS, Android, UX/UI teams, defined overall product vision for consumer and enterprise platforms, and managed the product lifecycle.
+
+Founded by behavioral economists, stickK is a goal-setting platform that utilizes financial and social incentives to empower behavioral change.At stickK, I oversaw all Web, iOS, Android, UX/UI teams, defined overall product vision for consumer and enterprise platforms, and managed the product lifecycle. Founded by behavioral economists, stickK is a goal-setting platform that utilizes financial and social incentives to empower behavioral change.…see more
+Product Management, JavaScript and +2 skills
+Associate Product Manager
+Associate Product Manager
+May 2017 - Jul 2018 · 1 yr 3 mosMay 2017 to Jul 2018 · 1 yr 3 mos
+Show all 8 experiences
+EducationEducation
+Flatiron School logo
+Flatiron School
+Flatiron School
+Computer Software EngineeringComputer Software Engineering
+Oct 2020 - Mar 2021Oct 2020 - Mar 2021
+Full Stack Web Development Bootcamp with a focus on Javascript, React, Redux, and Ruby on RailsFull Stack Web Development Bootcamp with a focus on Javascript, React, Redux, and Ruby on Rails
+
+Certificate of CompletionCertificate of Completion
+Grinnell College logo
+Grinnell College
+Grinnell College
+Bachelor of Arts (BA), EconomicsBachelor of Arts (BA), Economics
+2010 - 20142010 - 2014
+Grade: GraduateGrade: Graduate
+Activities and societies: Grinnell Men's Soccer Team, Grinnell Men's Swim TeamActivities and societies: Grinnell Men's Soccer Team, Grinnell Men's Swim Team
+Licenses & certificationsLicenses & certifications
+Consensys logo
+Blockchain Essentials: An Introduction to Blockchain
+Blockchain Essentials: An Introduction to Blockchain
+ConsensysConsensys
+Issued May 2021Issued May 2021
+Credential ID jqblkyobqyCredential ID jqblkyobqy
+Show credential
+VolunteeringVolunteering
+Scouting America logo
+Eagle Scout
+Eagle Scout
+Boy Scouts of AmericaBoy Scouts of America
+Social ServicesSocial Services
+SkillsSkills
+React.js
+React.js
+Company logo
+2 experiences across Bluepine and 1 other company2 experiences across Bluepine and 1 other company
+Shane Sweeney profile picture
+Endorsed by 1 person in the last 6 monthsEndorsed by 1 person in the last 6 months
+12 endorsements
+12 endorsements
+Next.js
+Next.js
+Company logo
+2 experiences across Bluepine and 1 other company2 experiences across Bluepine and 1 other company
+Shane Sweeney profile picture
+Endorsed by 1 person in the last 6 monthsEndorsed by 1 person in the last 6 months
+1 endorsement
+1 endorsement
+Show all 29 skills
+RecommendationsRecommendations
+
+ReceivedReceived
+GivenGiven
+Shane Sweeney
+Shane Sweeney
+Shane Sweeney
+· 1stFirst degree connection
+Senior Software EngineerSenior Software Engineer
+July 11, 2025, Shane was senior to Jerry but didn't manage Jerry directlyJuly 11, 2025, Shane was senior to Jerry but didn't manage Jerry directly
+I've had the pleasure of working with Jerry for over a year at Bluepine, and he’s been a key contributor to both our product and engineering culture.
+
+Jerry took the lead on building and maintaining our Airtable-based infrastructure, which acted as a prototype and launchpad for several core features of our in-app software. His work allowed us to track Home Manager delivery and homeowner onboarding long before we had those capabilities in our product—helping us move fast while learning from real users.
+
+He also drove many of the Airtable-to-Zapier automations that powered early customer onboarding and internal operations. His solutions were clean, reliable, and surprisingly elegant given the constraints. That work laid the foundation for smoother productization down the line.
+
+Jerry is also the kind of engineer who gets up to speed fast and isn’t afraid to challenge assumptions. He consistently brings thoughtful, outside-the-box perspectives to technical discussions—whether it's around feature design, implementation trade-offs, or process improvements.
+
+He's sharp, collaborative, and always ready to take ownership. Any team would benefit from having Jerry on board.I've had the pleasure of working with Jerry for over a year at Bluepine, and he’s been a key contributor to both our product and engineering culture. Jerry took the lead on building and maintaining our Airtable-based infrastructure, which acted as a prototype and launchpad for several core features of our in-app software. His work allowed us to track Home Manager delivery and homeowner onboarding long before we had those capabilities in our product—helping us move fast while learning from real users. He also drove many of the Airtable-to-Zapier automations that powered early customer onboarding and internal operations. His solutions were clean, reliable, and surprisingly elegant given the constraints. That work laid the foundation for smoother productization down the line. Jerry is also the kind of engineer who gets up to speed fast and isn’t afraid to challenge assumptions. He consistently brings thoughtful, outside-the-box perspectives to technical discussions—whether it's around feature design, implementation trade-offs, or process improvements. He's sharp, collaborative, and always ready to take ownership. Any team would benefit from having Jerry on board.…see more
+Jordan Goldberg
+Jordan Goldberg
+Jordan Goldberg
+· 1stFirst degree connection
+Founder at the Applied Behavioral Science GroupFounder at the Applied Behavioral Science Group
+March 16, 2021, Jordan managed Jerry directlyMarch 16, 2021, Jordan managed Jerry directly
+Jerry came over to stickK from Meetup as a product manager. Jerry hit the ground running; he is an eager and capable learner having absorbed a heavy crash course from our UX lead in order to contribute meaningful product work within weeks. Jerry consistently looks for ways to improve -- asking to sit in on meetings, enrolling in outside courses related to his work, etc. Jerry was swiftly promoted, serving as our de facto product lead after less than two years on the job. Jerry willingly wore more many hats at stickK; he's a great team player who takes on plenty of responsibilities that are not part of his core competency. And on a personal note, Jerry is also a fun, kind, happy, and engaging personality to have around the office. He will add value to any workplace culture! Jerry came over to stickK from Meetup as a product manager. Jerry hit the ground running; he is an eager and capable learner having absorbed a heavy crash course from our UX lead in order to contribute meaningful product work within weeks. Jerry consistently looks for ways to improve -- asking to sit in on meetings, enrolling in outside courses related to his work, etc. Jerry was swiftly promoted, serving as our de facto product lead after less than two years on the job. Jerry willingly wore more many hats at stickK; he's a great team player who takes on plenty of responsibilities that are not part of his core competency. And on a personal note, Jerry is also a fun, kind, happy, and engaging personality to have around the office. He will add value to any workplace culture! 
+Show all 3 received
+CoursesCourses
+Applied Game Theory in Economics
+Applied Game Theory in Economics
+338338
+Grinnell College logo
+Associated with Grinnell College
+Associated with Grinnell College
+Calculus 1
+Calculus 1
+131131
+Grinnell College logo
+Associated with Grinnell College
+Associated with Grinnell College
+Show all 12 courses
+LanguagesLanguages
+Spanish
+Spanish
+OrganizationsOrganizations
+Grinnell College Men's Soccer Team
+Grinnell College Men's Soccer Team
+Captain · Aug 2010 - May 2014Captain · Aug 2010 - May 2014
+Academic All-Conference PlayerAcademic All-Conference Player
+Grinnell College Men's Swim Team
+Grinnell College Men's Swim Team
+Freestyle sprinter · Nov 2010 - Sep 2013Freestyle sprinter · Nov 2010 - Sep 2013
+School Record Holder
+3 Time Conference ChampionSchool Record Holder 3 Time Conference Champion

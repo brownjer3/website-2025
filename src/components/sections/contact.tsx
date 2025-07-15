@@ -1,12 +1,13 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Send, Mail, Linkedin, Github, Twitter, CheckCircle2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { socialLinks } from '@/data/social-links'
+import { cn } from '@/lib/utils'
+import { CheckCircle2, Send } from 'lucide-react'
+import * as React from 'react'
 
 interface FormData {
   name: string
@@ -22,19 +23,12 @@ interface FormErrors {
   message?: string
 }
 
-const socialLinks = [
-  { name: "Email", icon: Mail, href: "mailto:brownjer3@gmail.com" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/jerrysafterbrown" },
-  { name: "GitHub", icon: Github, href: "https://github.com/brownjer3" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/jerrysafterbrown" },
-]
-
 export function ContactSection() {
   const [formData, setFormData] = React.useState<FormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   })
   const [errors, setErrors] = React.useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = React.useState(false)
@@ -44,23 +38,23 @@ export function ContactSection() {
     const newErrors: FormErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required"
+      newErrors.name = 'Name is required'
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = 'Email is required'
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email address"
+      newErrors.email = 'Invalid email address'
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required"
+      newErrors.subject = 'Subject is required'
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required"
+      newErrors.message = 'Message is required'
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters"
+      newErrors.message = 'Message must be at least 10 characters'
     }
 
     setErrors(newErrors)
@@ -80,12 +74,12 @@ export function ContactSection() {
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       setIsSuccess(true)
-      setFormData({ name: "", email: "", subject: "", message: "" })
-      
+      setFormData({ name: '', email: '', subject: '', message: '' })
+
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000)
     } catch (error) {
-      console.error("Error sending message:", error)
+      console.error('Error sending message:', error)
       // Handle error state
     } finally {
       setIsSubmitting(false)
@@ -104,28 +98,28 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4">
+    <section id="contact" className="px-4 py-12 sm:py-16 md:py-20">
       <div className="container mx-auto max-w-6xl">
-        <div className="space-y-2 text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold">Get In Touch</h2>
-          <p className="text-muted-foreground text-lg">
+        <div className="mb-12 space-y-2 text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
+          <p className="text-lg text-muted-foreground">
             Let&apos;s discuss how I can help bring your ideas to life
           </p>
-          <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
+          <div className="mx-auto h-1 w-20 rounded-full bg-primary" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact Form */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-2">Send a Message</h3>
+              <h3 className="mb-2 text-xl font-semibold">Send a Message</h3>
               <p className="text-sm text-muted-foreground">
                 I&apos;ll get back to you within 24 hours.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
@@ -133,8 +127,8 @@ export function ContactSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
-                    className={cn(errors.name && "border-destructive")}
+                    placeholder="Michael Scott"
+                    className={cn(errors.name && 'border-destructive')}
                     disabled={isSubmitting}
                   />
                   {errors.name && (
@@ -150,8 +144,8 @@ export function ContactSection() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
-                    className={cn(errors.email && "border-destructive")}
+                    placeholder="michael@dundermifflin.com"
+                    className={cn(errors.email && 'border-destructive')}
                     disabled={isSubmitting}
                   />
                   {errors.email && (
@@ -168,7 +162,7 @@ export function ContactSection() {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Project collaboration"
-                  className={cn(errors.subject && "border-destructive")}
+                  className={cn(errors.subject && 'border-destructive')}
                   disabled={isSubmitting}
                 />
                 {errors.subject && (
@@ -183,9 +177,9 @@ export function ContactSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project..."
+                  placeholder="I have a question about..."
                   rows={5}
-                  className={cn(errors.message && "border-destructive")}
+                  className={cn(errors.message && 'border-destructive')}
                   disabled={isSubmitting}
                 />
                 {errors.message && (
@@ -193,13 +187,9 @@ export function ContactSection() {
                 )}
               </div>
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isSubmitting}
-              >
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
-                  "Sending..."
+                  'Sending...'
                 ) : (
                   <>
                     <Send className="mr-2 h-4 w-4" />
@@ -220,8 +210,8 @@ export function ContactSection() {
           {/* Contact Info */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-2">Connect With Me</h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              <h3 className="mb-2 text-xl font-semibold">Connect With Me</h3>
+              <p className="mb-6 text-sm text-muted-foreground">
                 Feel free to reach out through any of these channels.
               </p>
 
@@ -232,13 +222,15 @@ export function ContactSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 sm:p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+                    className="flex items-center gap-3 rounded-lg border bg-card p-3 transition-colors hover:bg-accent sm:p-4"
                   >
                     <link.icon className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium">{link.name}</div>
                       <div className="text-sm text-muted-foreground">
-                        {link.href.replace("mailto:", "").replace("https://", "")}
+                        {link.href
+                          .replace('mailto:', '')
+                          .replace('https://', '')}
                       </div>
                     </div>
                   </a>
@@ -247,23 +239,25 @@ export function ContactSection() {
             </div>
 
             {/* Additional Info */}
-            <div className="p-4 sm:p-5 md:p-6 rounded-lg bg-muted/50">
-              <h4 className="font-semibold mb-2">Looking for collaboration on:</h4>
+            <div className="rounded-lg bg-muted/50 p-4 sm:p-5 md:p-6">
+              <h4 className="mb-2 font-semibold">
+                Looking for collaboration on:
+              </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">•</span>
+                  <span className="mt-0.5 text-primary">•</span>
                   <span>Full-stack development projects</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">•</span>
+                  <span className="mt-0.5 text-primary">•</span>
                   <span>Technical product consulting</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">•</span>
+                  <span className="mt-0.5 text-primary">•</span>
                   <span>AI/ML integration and optimization</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">•</span>
+                  <span className="mt-0.5 text-primary">•</span>
                   <span>Performance and scalability improvements</span>
                 </li>
               </ul>

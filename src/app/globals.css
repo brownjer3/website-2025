@@ -204,4 +204,9 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Prevent text orphans and improve wrapping */
+  .text-pretty {
+    text-wrap: balance;
+  }
 }
