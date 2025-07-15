@@ -28,6 +28,41 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'devflow',
+    title: 'DevFlow Components',
+    subtitle: 'AI-enhanced React components for modern developers',
+    period: 'January 2025 - Present',
+    status: 'production',
+    featured: true,
+    metrics: {
+      performance: '< 100ms renders',
+      impact: 'Streaming AI features',
+      scale: 'React 19 ready',
+    },
+    star: {
+      situation:
+        'Modern React developers needed production-ready components with integrated AI capabilities and exceptional performance',
+      task: 'Build a component library featuring streaming AI, React 19 features, and a professional design system',
+      action:
+        'Created SmartDataTable and AISearchBar components with TypeScript, implemented real-time streaming AI responses, built comprehensive design system with electric blue (#0066FF) branding, optimized for < 100ms renders and < 45KB bundles',
+      result:
+        'Delivered production-ready React 19 components with streaming AI, optimistic updates, and comprehensive documentation on live demo site',
+    },
+    technologies: [
+      'TypeScript',
+      'React 19',
+      'Next.js',
+      'Tailwind CSS',
+      'OpenAI',
+      'Vercel',
+    ],
+    links: {
+      live: 'https://devflow-components.vercel.app/',
+      github: 'https://github.com/brownjer3/devflow',
+    },
+    category: 'web',
+  },
+  {
     id: 'elara-news',
     title: 'Elara News - AI Blockchain Journalist',
     subtitle: 'AI-powered SUI blockchain ecosystem news platform',
