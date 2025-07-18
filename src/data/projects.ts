@@ -102,8 +102,9 @@ export const projects: Project[] = [
   },
   {
     id: 'elizara',
-    title: 'Elizara AI Agent',
-    subtitle: 'Autonomous AI agent built on Eliza framework',
+    title: 'Elara News - AI Agent',
+    subtitle:
+      'Autonomous AI agent for the SUI blockchain built on Eliza framework',
     period: 'June 2025',
     status: 'production',
     featured: true,
@@ -129,6 +130,7 @@ export const projects: Project[] = [
       'OpenAI',
     ],
     links: {
+      live: 'https://www.elara.news/',
       github: 'https://github.com/brownjer3/elizara',
     },
     category: 'ml',
