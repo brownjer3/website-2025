@@ -212,14 +212,24 @@ export function ProjectsSection() {
           {/* Links */}
           <div className="flex gap-2">
             {project.links.live && (
-              <Button variant="outline" size="sm" asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="group relative overflow-hidden border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 transition-all duration-300 hover:border-primary hover:from-primary hover:to-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
+              >
                 <a
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  Live Demo
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-0" />
+                  <ExternalLink className="relative mr-2 h-4 w-4 transition-transform duration-300 group-hover:rotate-12" />
+                  <span className="relative font-medium">Live Demo</span>
+                  <span className="relative ml-1 inline-flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+                  </span>
                 </a>
               </Button>
             )}

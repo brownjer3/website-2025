@@ -49,8 +49,15 @@ export function HeroSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-8 text-center">
           {/* Badge */}
-          <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            Available for opportunities
+          <div className="relative inline-flex">
+            <div className="absolute inset-0 animate-pulse rounded-full bg-green-500/20 blur-xl" />
+            <div className="relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-4 py-1.5 text-sm font-medium text-white shadow-lg shadow-green-500/25">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+              </span>
+              Available for opportunities
+            </div>
           </div>
 
           {/* Main Heading */}
