@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: 'Pipe MCP Server',
     subtitle: 'Unified developer context through Model Context Protocol',
     period: 'July 2025',
-    status: 'prototype',
+    status: 'production',
     featured: true,
     metrics: {
       performance: 'Real-time sync across platforms',
@@ -60,6 +60,7 @@ export const projects: Project[] = [
       'BullMQ',
     ],
     links: {
+      live: 'https://pipe-production.up.railway.app/',
       github: 'https://github.com/brownjer3/pipe',
     },
     category: 'backend',
