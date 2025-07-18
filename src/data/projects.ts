@@ -23,7 +23,7 @@ export interface Project {
     github?: string
     caseStudy?: string
   }
-  category: 'web' | 'mobile' | 'ml' | 'infrastructure' | 'backend'
+  category: 'web' | 'mobile' | 'ml' | 'backend'
 }
 
 export const projects: Project[] = [

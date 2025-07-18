@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { experiences } from '@/data/experience'
 import { cn } from '@/lib/utils'
-import { Building2, MapPin, Calendar } from 'lucide-react'
+import { Building2, MapPin, Calendar, GraduationCap } from 'lucide-react'
 
 // Prevent orphaned words by adding non-breaking spaces
 function preventOrphans(text: string): string {
@@ -45,10 +45,16 @@ export function ExperienceSection() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 z-10 h-4 w-4 -translate-x-1/2 rounded-full bg-primary transition-all duration-300 md:left-1/2">
+                <div
+                  className={cn(
+                    'absolute left-0 z-10 h-4 w-4 -translate-x-1/2 rounded-full transition-all duration-300 md:left-1/2',
+                    exp.type === 'education' ? 'bg-primary/60' : 'bg-primary'
+                  )}
+                >
                   <div
                     className={cn(
-                      'absolute inset-0 animate-ping rounded-full bg-primary',
+                      'absolute inset-0 animate-ping rounded-full',
+                      exp.type === 'education' ? 'bg-primary/60' : 'bg-primary',
                       hoveredId === exp.id ? 'opacity-75' : 'opacity-0'
                     )}
                   />
@@ -63,16 +69,30 @@ export function ExperienceSection() {
                 >
                   <div
                     className={cn(
-                      'rounded-lg border bg-card p-4 transition-all duration-300 sm:p-5 md:p-6',
+                      'rounded-lg border p-4 transition-all duration-300 sm:p-5 md:p-6',
+                      exp.type === 'education'
+                        ? 'border-dashed border-primary/30 bg-primary/5'
+                        : 'bg-card',
                       hoveredId === exp.id ? 'border-primary/50 shadow-lg' : ''
                     )}
                   >
                     {/* Header */}
                     <div className="space-y-2">
-                      <h3 className="text-xl font-semibold">{exp.role}</h3>
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="text-xl font-semibold">{exp.role}</h3>
+                        {exp.type === 'education' && (
+                          <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                            Education
+                          </span>
+                        )}
+                      </div>
                       <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
-                          <Building2 className="h-3 w-3" />
+                          {exp.type === 'education' ? (
+                            <GraduationCap className="h-3 w-3" />
+                          ) : (
+                            <Building2 className="h-3 w-3" />
+                          )}
                           <span>{exp.company}</span>
                         </div>
                         <div className="flex items-center gap-1">

@@ -1,28 +1,28 @@
 'use client'
 
-import * as React from 'react'
-import { projects } from '@/data/projects'
-import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { projects } from '@/data/projects'
+import { cn } from '@/lib/utils'
 import {
+  BarChart3,
+  ChevronDown,
   ExternalLink,
   Github,
-  BarChart3,
+  Sparkles,
+  TrendingUp,
   Users,
   Zap,
-  TrendingUp,
-  ChevronDown,
-  Sparkles,
 } from 'lucide-react'
+import * as React from 'react'
 
 const categories = [
   { value: 'all', label: 'All Projects' },
   { value: 'web', label: 'Web' },
   { value: 'mobile', label: 'Mobile' },
   { value: 'ml', label: 'AI/ML' },
-  { value: 'infrastructure', label: 'Infrastructure' },
+  { value: 'backend', label: 'Backend' },
 ]
 
 const statusColors = {

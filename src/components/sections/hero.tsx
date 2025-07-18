@@ -69,13 +69,13 @@ export function HeroSection() {
               </span>
             </h1>
             <p className="text-2xl font-semibold text-muted-foreground sm:text-3xl md:text-4xl">
-              Full Stack Software Engineer
+              Product-Minded Software Engineer
             </p>
           </div>
 
           {/* Description */}
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Product-minded Full Stack Engineer with 10 years in tech. I combine
+            Product-minded Full-Stack Engineer with 10 years in tech. I combine
             deep technical expertise in React and TypeScript with a unique
             product perspective to deliver high-impact features that drive
             business outcomes.

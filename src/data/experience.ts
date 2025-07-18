@@ -11,6 +11,7 @@ export interface Experience {
   achievements: string[]
   technologies: string[]
   logo?: string
+  type?: 'work' | 'education' // New field to distinguish entry types
 }
 
 export const experiences: Experience[] = [
@@ -75,7 +76,7 @@ export const experiences: Experience[] = [
   {
     id: 'freelance',
     company: 'Freelance',
-    role: 'Full-Stack Software Engineer',
+    role: 'Software Engineer',
     period: {
       start: 'October 2020',
       end: 'February 2023',
@@ -96,6 +97,35 @@ export const experiences: Experience[] = [
       'Analytics',
       'NFT',
     ],
+  },
+  {
+    id: 'flatiron',
+    company: 'Flatiron School',
+    role: 'Full-Stack Software Engineering Bootcamp',
+    period: {
+      start: 'October 2020',
+      end: 'April 2021',
+    },
+    location: 'Remote',
+    description:
+      'Intensive full-stack software engineering program focused on modern web development.',
+    achievements: [
+      'Completed 600+ hours of hands-on curriculum in software engineering fundamentals',
+      'Built multiple full-stack applications using React, Ruby on Rails, and PostgreSQL',
+      'Mastered core CS concepts including data structures, algorithms, and OOP principles',
+      'Collaborated on team projects using Git, pair programming, and Agile methodologies',
+    ],
+    technologies: [
+      'JavaScript',
+      'React',
+      'Ruby',
+      'Ruby on Rails',
+      'PostgreSQL',
+      'HTML/CSS',
+      'Git',
+      'REST APIs',
+    ],
+    type: 'education',
   },
   {
     id: 'stickk-pm',
