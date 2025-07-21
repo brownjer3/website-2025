@@ -63,7 +63,7 @@ export const skills: Skill[] = [
     name: 'Python',
     category: 'language',
     proficiency: 'learning',
-    yearsExperience: 1,
+    yearsExperience: 2,
   },
   {
     name: 'Ruby',
@@ -120,21 +120,42 @@ export const skills: Skill[] = [
     yearsExperience: 2,
   },
   {
-    name: 'Analytics',
-    category: 'tool',
-    proficiency: 'proficient',
-    yearsExperience: 5,
+    name: 'Tailwind CSS',
+    category: 'framework',
+    proficiency: 'expert',
+    yearsExperience: 3,
   },
   {
-    name: 'Agile',
-    category: 'tool',
+    name: 'shadcn/ui',
+    category: 'framework',
     proficiency: 'proficient',
-    yearsExperience: 6,
+    yearsExperience: 1,
+  },
+  {
+    name: 'GitHub',
+    category: 'tool',
+    proficiency: 'expert',
+    yearsExperience: 8,
+  },
+  {
+    name: 'Vercel',
+    category: 'cloud',
+    proficiency: 'proficient',
+    yearsExperience: 2,
   },
 
   // Learning - Active exploration, side projects
   { name: 'Swift', category: 'language', proficiency: 'learning' },
   { name: 'React Native', category: 'framework', proficiency: 'learning' },
+  {
+    name: 'Docker',
+    category: 'tool',
+    proficiency: 'learning',
+    yearsExperience: 1,
+  },
+  { name: 'Vitest', category: 'tool', proficiency: 'learning' },
+  { name: 'Playwright', category: 'tool', proficiency: 'learning' },
+  { name: 'Solidity', category: 'language', proficiency: 'learning' },
 ]
 
 export const skillCategories = [
