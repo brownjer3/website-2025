@@ -9,19 +9,25 @@ export interface Skill {
 export const skills: Skill[] = [
   // Expert Level - Daily use, production experience
   {
-    name: 'TypeScript',
-    category: 'language',
-    proficiency: 'expert',
-    yearsExperience: 4,
-  },
-  {
     name: 'JavaScript',
     category: 'language',
     proficiency: 'expert',
     yearsExperience: 6,
   },
   {
+    name: 'TypeScript',
+    category: 'language',
+    proficiency: 'expert',
+    yearsExperience: 4,
+  },
+  {
     name: 'React',
+    category: 'framework',
+    proficiency: 'expert',
+    yearsExperience: 5,
+  },
+  {
+    name: 'Node.js',
     category: 'framework',
     proficiency: 'expert',
     yearsExperience: 5,
@@ -33,12 +39,18 @@ export const skills: Skill[] = [
     yearsExperience: 3,
   },
   {
-    name: 'Node.js',
+    name: 'Tailwind CSS',
     category: 'framework',
     proficiency: 'expert',
-    yearsExperience: 5,
+    yearsExperience: 3,
   },
   { name: 'Git', category: 'tool', proficiency: 'expert', yearsExperience: 8 },
+  {
+    name: 'GitHub',
+    category: 'tool',
+    proficiency: 'expert',
+    yearsExperience: 8,
+  },
 
   // Proficient - Regular use, strong understanding
   {
@@ -60,28 +72,16 @@ export const skills: Skill[] = [
     yearsExperience: 6,
   },
   {
-    name: 'Python',
-    category: 'language',
-    proficiency: 'learning',
-    yearsExperience: 2,
-  },
-  {
     name: 'Ruby',
     category: 'language',
     proficiency: 'proficient',
     yearsExperience: 3,
   },
   {
-    name: 'tRPC',
-    category: 'framework',
-    proficiency: 'proficient',
-    yearsExperience: 1,
-  },
-  {
-    name: 'Prisma ORM',
+    name: 'REST APIs',
     category: 'tool',
     proficiency: 'proficient',
-    yearsExperience: 2,
+    yearsExperience: 6,
   },
   {
     name: 'MySQL',
@@ -96,6 +96,12 @@ export const skills: Skill[] = [
     yearsExperience: 3,
   },
   {
+    name: 'Prisma ORM',
+    category: 'tool',
+    proficiency: 'proficient',
+    yearsExperience: 2,
+  },
+  {
     name: 'Stripe',
     category: 'tool',
     proficiency: 'proficient',
@@ -108,22 +114,28 @@ export const skills: Skill[] = [
     yearsExperience: 2,
   },
   {
-    name: 'REST APIs',
-    category: 'tool',
-    proficiency: 'proficient',
-    yearsExperience: 6,
-  },
-  {
     name: 'Web3',
     category: 'tool',
     proficiency: 'proficient',
     yearsExperience: 2,
   },
   {
-    name: 'Tailwind CSS',
-    category: 'framework',
-    proficiency: 'expert',
-    yearsExperience: 3,
+    name: 'Vercel',
+    category: 'cloud',
+    proficiency: 'proficient',
+    yearsExperience: 2,
+  },
+  {
+    name: 'Claude Code',
+    category: 'tool',
+    proficiency: 'proficient',
+    yearsExperience: 1,
+  },
+  {
+    name: 'Prompt Engineering',
+    category: 'tool',
+    proficiency: 'proficient',
+    yearsExperience: 1,
   },
   {
     name: 'shadcn/ui',
@@ -132,30 +144,36 @@ export const skills: Skill[] = [
     yearsExperience: 1,
   },
   {
-    name: 'GitHub',
-    category: 'tool',
-    proficiency: 'expert',
-    yearsExperience: 8,
-  },
-  {
-    name: 'Vercel',
-    category: 'cloud',
+    name: 'tRPC',
+    category: 'framework',
     proficiency: 'proficient',
-    yearsExperience: 2,
+    yearsExperience: 1,
   },
 
   // Learning - Active exploration, side projects
-  { name: 'Swift', category: 'language', proficiency: 'learning' },
-  { name: 'React Native', category: 'framework', proficiency: 'learning' },
+  {
+    name: 'Python',
+    category: 'language',
+    proficiency: 'learning',
+    yearsExperience: 2,
+  },
   {
     name: 'Docker',
     category: 'tool',
     proficiency: 'learning',
     yearsExperience: 1,
   },
+  { name: 'Swift', category: 'language', proficiency: 'learning' },
+  { name: 'Solidity', category: 'language', proficiency: 'learning' },
+  { name: 'PostgreSQL', category: 'database', proficiency: 'learning' },
+  { name: 'React Native', category: 'framework', proficiency: 'learning' },
+  {
+    name: 'Model Context Protocol (MCP)',
+    category: 'tool',
+    proficiency: 'learning',
+  },
   { name: 'Vitest', category: 'tool', proficiency: 'learning' },
   { name: 'Playwright', category: 'tool', proficiency: 'learning' },
-  { name: 'Solidity', category: 'language', proficiency: 'learning' },
 ]
 
 export const skillCategories = [
