@@ -3,7 +3,13 @@
 import * as React from 'react'
 import { experiences } from '@/data/experience'
 import { cn } from '@/lib/utils'
-import { Building2, MapPin, Calendar, GraduationCap } from 'lucide-react'
+import {
+  Building2,
+  MapPin,
+  Calendar,
+  GraduationCap,
+  ChevronDown,
+} from 'lucide-react'
 
 // Prevent orphaned words by adding non-breaking spaces
 function preventOrphans(text: string): string {
@@ -13,6 +19,7 @@ function preventOrphans(text: string): string {
 
 export function ExperienceSection() {
   const [hoveredId, setHoveredId] = React.useState<string | null>(null)
+  const [expandedId, setExpandedId] = React.useState<string | null>(null)
 
   return (
     <section
@@ -86,24 +93,24 @@ export function ExperienceSection() {
                           </span>
                         )}
                       </div>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center justify-between text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
                           {exp.type === 'education' ? (
-                            <GraduationCap className="h-3 w-3" />
+                            <GraduationCap className="h-3 w-3 shrink-0" />
                           ) : (
-                            <Building2 className="h-3 w-3" />
+                            <Building2 className="h-3 w-3 shrink-0" />
                           )}
-                          <span>{exp.company}</span>
+                          <span className="truncate">{exp.company}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>
+                          <Calendar className="h-3 w-3 shrink-0" />
+                          <span className="whitespace-nowrap">
                             {exp.period.start} - {exp.period.end}
                           </span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3" />
-                          <span>{exp.location}</span>
+                          <MapPin className="h-3 w-3 shrink-0" />
+                          <span className="truncate">{exp.location}</span>
                         </div>
                       </div>
                     </div>
@@ -113,32 +120,71 @@ export function ExperienceSection() {
                       {preventOrphans(exp.description)}
                     </p>
 
-                    {/* Achievements */}
-                    <ul className="mt-4 space-y-3">
-                      {exp.achievements.map((achievement, i) => (
-                        <li
-                          key={i}
-                          className="grid grid-cols-[auto_1fr] gap-3 text-sm"
-                        >
-                          <span className="mt-0.5 text-primary">•</span>
-                          <span className="leading-relaxed">
-                            {preventOrphans(achievement)}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Expand/Collapse Toggle */}
+                    <button
+                      onClick={() =>
+                        setExpandedId(expandedId === exp.id ? null : exp.id)
+                      }
+                      className={cn(
+                        'mt-4 flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium',
+                        'bg-muted/50 transition-all duration-300 hover:bg-muted',
+                        expandedId === exp.id && 'bg-muted'
+                      )}
+                    >
+                      <span>
+                        {expandedId === exp.id
+                          ? 'Hide Details'
+                          : 'View Details'}
+                      </span>
+                      <ChevronDown
+                        className={cn(
+                          'h-4 w-4 transition-transform duration-300',
+                          expandedId === exp.id && 'rotate-180'
+                        )}
+                      />
+                    </button>
 
-                    {/* Technologies */}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md bg-primary/10 px-2 py-1 text-xs text-primary"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    {/* Expandable Content */}
+                    {expandedId === exp.id && (
+                      <div className="mt-4 space-y-4 duration-300 animate-in slide-in-from-top-2">
+                        {/* Achievements */}
+                        <div className="space-y-3">
+                          <h4 className="text-sm font-semibold">
+                            Key Achievements
+                          </h4>
+                          <ul className="space-y-3">
+                            {exp.achievements.map((achievement, i) => (
+                              <li
+                                key={i}
+                                className="grid grid-cols-[auto_1fr] gap-3 text-sm"
+                              >
+                                <span className="mt-0.5 text-primary">•</span>
+                                <span className="leading-relaxed">
+                                  {preventOrphans(achievement)}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Technologies */}
+                        <div>
+                          <h4 className="mb-2 text-sm font-semibold">
+                            Technologies Used
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {exp.technologies.map((tech) => (
+                              <span
+                                key={tech}
+                                className="rounded-md bg-primary/10 px-2 py-1 text-xs text-primary"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
