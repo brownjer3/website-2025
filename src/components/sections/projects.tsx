@@ -3,17 +3,25 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { projects } from '@/data/projects'
 import { cn } from '@/lib/utils'
 import {
   BarChart3,
-  ChevronDown,
   ExternalLink,
-  Github,
+  Info,
   Sparkles,
   TrendingUp,
   Users,
   Zap,
+  Code2,
 } from 'lucide-react'
 import * as React from 'react'
 
@@ -33,9 +41,6 @@ const statusColors = {
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = React.useState('all')
-  const [expandedProject, setExpandedProject] = React.useState<string | null>(
-    null
-  )
 
   const filteredProjects = React.useMemo(() => {
     if (selectedCategory === 'all') return projects
@@ -67,184 +72,150 @@ export function ProjectsSection() {
     project: (typeof projects)[0]
     featured?: boolean
   }) => {
-    const isExpanded = expandedProject === project.id
-
     return (
       <div
         className={cn(
-          'overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg',
-          featured && 'md:col-span-2',
-          isExpanded && 'ring-2 ring-primary'
+          'relative flex h-full flex-col overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg',
+          featured &&
+            'border-primary/20 bg-gradient-to-br from-card via-card to-primary/[0.02]'
         )}
       >
-        <div className="space-y-4 p-4 sm:p-5 md:p-6">
+        <div className="flex flex-1 flex-col space-y-4 p-4 sm:p-5 md:p-6">
           {/* Header */}
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-4">
-              <div>
+              <div className="min-w-0 flex-1">
                 <h3 className="text-xl font-semibold">{project.title}</h3>
                 <p className="text-sm text-muted-foreground">
                   {project.subtitle}
                 </p>
               </div>
-              <Badge
-                variant={statusColors[project.status]}
-                className="shrink-0"
-              >
-                {project.status}
-              </Badge>
+              <div className="flex items-center gap-2">
+                {featured && (
+                  <Badge
+                    variant="outline"
+                    className="border-yellow-500/50 bg-yellow-50 text-yellow-700 dark:border-yellow-500/30 dark:bg-yellow-500/10 dark:text-yellow-500"
+                  >
+                    <Sparkles className="mr-1 h-3 w-3" />
+                    Featured
+                  </Badge>
+                )}
+                <Badge
+                  variant={statusColors[project.status]}
+                  className="shrink-0"
+                >
+                  {project.status}
+                </Badge>
+              </div>
             </div>
             <p className="text-sm text-muted-foreground">{project.period}</p>
           </div>
 
-          {/* Metrics */}
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {/* Metrics - Full width with 3 columns */}
+          <div className="grid grid-cols-3 gap-2">
             {Object.entries(project.metrics).map(([key, value]) => (
-              <div key={key} className="flex items-center gap-2">
-                <MetricIcon type={key} />
-                <div>
-                  <div className="text-sm font-medium">{value}</div>
-                  <div className="text-xs text-muted-foreground">{key}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Case Study Toggle */}
-          <button
-            onClick={() => setExpandedProject(isExpanded ? null : project.id)}
-            className={cn(
-              'group relative w-full overflow-hidden rounded-lg transition-all duration-300',
-              'bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5',
-              'hover:from-primary/10 hover:via-primary/15 hover:to-primary/10',
-              'border border-primary/20 hover:border-primary/30',
-              'px-4 py-3',
-              isExpanded &&
-                'border-primary/30 from-primary/10 via-primary/15 to-primary/10'
-            )}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium text-foreground">
-                  {isExpanded ? 'Hide Case Study' : 'View Case Study'}
-                </span>
-              </div>
-              <ChevronDown
-                className={cn(
-                  'h-4 w-4 text-primary transition-transform duration-300',
-                  isExpanded && 'rotate-180'
-                )}
-              />
-            </div>
-            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-primary/10 to-transparent transition-transform duration-1000 group-hover:translate-x-0" />
-          </button>
-
-          {/* Case Study Details */}
-          {isExpanded && (
-            <div className="space-y-4 duration-300 animate-in slide-in-from-top-2">
-              <div className="space-y-4 rounded-lg bg-gradient-to-br from-primary/5 via-transparent to-primary/5 p-6">
-                <div className="grid gap-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary">
-                        Situation
-                      </h4>
-                    </div>
-                    <p className="pl-4 text-sm leading-relaxed text-muted-foreground">
-                      {project.star.situation}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 animate-pulse rounded-full bg-primary delay-75" />
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary">
-                        Task
-                      </h4>
-                    </div>
-                    <p className="pl-4 text-sm leading-relaxed text-muted-foreground">
-                      {project.star.task}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 animate-pulse rounded-full bg-primary delay-150" />
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary">
-                        Action
-                      </h4>
-                    </div>
-                    <p className="pl-4 text-sm leading-relaxed text-muted-foreground">
-                      {project.star.action}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 animate-pulse rounded-full bg-primary delay-300" />
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary">
-                        Result
-                      </h4>
-                    </div>
-                    <p className="pl-4 text-sm font-medium leading-relaxed text-muted-foreground">
-                      {project.star.result}
-                    </p>
+              <div key={key} className="rounded-md bg-muted/30 p-3">
+                <div className="flex items-center gap-2">
+                  <MetricIcon type={key} />
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate text-xs font-medium">{value}</div>
+                    <div className="text-xs text-muted-foreground">{key}</div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md bg-muted px-2 py-1 text-xs"
-              >
-                {tech}
-              </span>
             ))}
           </div>
 
           {/* Links */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {project.links.live && (
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="group relative overflow-hidden border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 transition-all duration-300 hover:border-primary hover:from-primary hover:to-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
-              >
+              <Button variant="outline" size="sm" asChild className="h-8">
                 <a
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-0" />
-                  <ExternalLink className="relative mr-2 h-4 w-4 transition-transform duration-300 group-hover:rotate-12" />
-                  <span className="relative font-medium">Live Demo</span>
-                  <span className="relative ml-1 inline-flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
-                  </span>
+                  <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
+                  Live Demo
                 </a>
               </Button>
             )}
             {project.links.github && (
-              <Button variant="outline" size="sm" asChild>
+              <Button variant="ghost" size="sm" asChild className="h-8">
                 <a
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="mr-2 h-4 w-4" />
+                  <Code2 className="mr-1.5 h-3.5 w-3.5" />
                   Code
                 </a>
               </Button>
             )}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-8">
+                  <Info className="mr-1.5 h-3.5 w-3.5" />
+                  View Details
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>{project.title}</DialogTitle>
+                  <DialogDescription>{project.subtitle}</DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 pt-4">
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                      Situation
+                    </h4>
+                    <p className="text-sm leading-relaxed">
+                      {project.star.situation}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                      Task
+                    </h4>
+                    <p className="text-sm leading-relaxed">
+                      {project.star.task}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                      Action
+                    </h4>
+                    <p className="text-sm leading-relaxed">
+                      {project.star.action}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                      Result
+                    </h4>
+                    <p className="text-sm font-medium leading-relaxed">
+                      {project.star.result}
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+          {/* Spacer to push technologies to bottom */}
+          <div className="flex-1" />
+
+          {/* Technologies - At the bottom with better badge styling */}
+          <div className="flex flex-wrap gap-1.5 pt-2">
+            {project.technologies.map((tech) => (
+              <Badge
+                key={tech}
+                variant="secondary"
+                className="border-border/50 bg-secondary/50 text-xs"
+              >
+                {tech}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>

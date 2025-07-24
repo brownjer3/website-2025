@@ -66,6 +66,40 @@ export const projects: Project[] = [
     category: 'backend',
   },
   {
+    id: 'barrow',
+    title: 'Barrow',
+    subtitle: 'Peer-to-peer marketplace for tool and equipment sharing',
+    period: 'July 2025',
+    status: 'prototype',
+    featured: false,
+    metrics: {
+      impact: 'Community building app',
+      scale: 'Mobile-first platform',
+      performance: 'Native mobile animations',
+    },
+    star: {
+      situation:
+        'Communities needed a fun, accessible way to share tools and equipment locally, reducing waste and building neighborhood connections',
+      task: 'Build a mobile app that makes borrowing and lending tools as easy and playful as "kids sharing toys in the neighborhood"',
+      action:
+        'Developed React Native/Expo app with TypeScript, implemented playful animations throughout, created Airtable backend integration, designed warm community-focused UI with spring animations and micro-interactions',
+      result:
+        'Delivered MVP-ready mobile app with complete UI foundation, 11 animated components, and scalable architecture ready for community testing',
+    },
+    technologies: [
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Airtable',
+      'Redux Toolkit',
+      'React Navigation',
+    ],
+    links: {
+      github: 'https://github.com/brownjer3/barrow',
+    },
+    category: 'mobile',
+  },
+  {
     id: 'devflow',
     title: 'DevFlow Components',
     subtitle: 'AI-enhanced React components for modern developers',
@@ -163,6 +197,33 @@ export const projects: Project[] = [
     category: 'mobile',
   },
   {
+    id: 'bluepiners-map',
+    title: 'Bluepiners Map',
+    subtitle: 'Interactive service provider location mapping',
+    period: 'April 2025',
+    status: 'production',
+    featured: false,
+    metrics: {
+      users: '500+ providers',
+      impact: 'Geographic visualization',
+      performance: 'Real-time updates',
+    },
+    star: {
+      situation:
+        'Bluepine needed geographic visualization of service providers to optimize territory management and customer matching',
+      task: 'Create interactive mapping solution showing provider locations, availability, and service areas',
+      action:
+        'Built React-based mapping application with geographic data visualization, implemented real-time provider status updates, created territory management tools',
+      result:
+        'Delivered interactive mapping platform improving operational efficiency and customer-provider matching',
+    },
+    technologies: ['React', 'TypeScript', 'Mapbox', 'Next.js', 'Tailwind CSS'],
+    links: {
+      github: 'https://github.com/brownjer3/bluepiners-map',
+    },
+    category: 'web',
+  },
+  {
     id: 'bluepine-admin',
     title: 'Bluepine Admin Panel',
     subtitle: 'Administrative dashboard for service management',
@@ -197,29 +258,134 @@ export const projects: Project[] = [
     category: 'web',
   },
   {
-    id: 'bluepiners-map',
-    title: 'Bluepiners Map',
-    subtitle: 'Interactive service provider location mapping',
-    period: 'April 2025',
+    id: 'stickk-plaiground',
+    title: 'stickK plAIground',
+    subtitle: 'AI-powered prototypes for goal commitment platform',
+    period: 'February 2024',
     status: 'production',
     featured: false,
     metrics: {
-      users: '500+ providers',
-      impact: 'Geographic visualization',
-      performance: 'Real-time updates',
+      impact: '6 AI prototypes',
+      scale: 'Enterprise integration',
+      performance: 'OpenAI API optimization',
     },
     star: {
       situation:
-        'Bluepine needed geographic visualization of service providers to optimize territory management and customer matching',
-      task: 'Create interactive mapping solution showing provider locations, availability, and service areas',
+        'stickK.com needed to explore how AI could enhance their goal commitment platform across various use cases from commitment creation to support',
+      task: 'Build 6 distinct AI prototypes demonstrating different applications of OpenAI APIs within the stickK ecosystem',
       action:
-        'Built React-based mapping application with geographic data visualization, implemented real-time provider status updates, created territory management tools',
+        'Developed Next.js/TypeScript platform with OpenAI Assistant API integration, implemented commitment creation chat with DALL-E 3 image generation, built evidence verification with Vision API, created dynamic nudge generator and support bot, added admin tools for data analysis',
       result:
-        'Delivered interactive mapping platform improving operational efficiency and customer-provider matching',
+        'Delivered production-ready AI playground deployed on Vercel showcasing practical AI implementations for goal commitment enhancement',
     },
-    technologies: ['React', 'TypeScript', 'Mapbox', 'Next.js', 'Tailwind CSS'],
+    technologies: [
+      'TypeScript',
+      'Next.js',
+      'OpenAI API',
+      'Mantine UI',
+      'Vercel',
+      'Assistant API',
+      'DALL-E 3',
+      'Vision API',
+    ],
     links: {
-      github: 'https://github.com/brownjer3/bluepiners-map',
+      live: 'https://stickk-plaiground.vercel.app',
+      github: 'https://github.com/brownjer3/stickK-plAIground',
+    },
+    category: 'ml',
+  },
+  {
+    id: 'dookey-leaderboard',
+    title: 'DookeyDashBored',
+    subtitle: 'Real-time leaderboard for Bored Ape Yacht Club game',
+    period: 'January 2023',
+    status: 'archived',
+    featured: false,
+    metrics: {
+      impact: 'Community gaming tool',
+      scale: 'Real-time updates',
+      performance: 'Live leaderboard tracking',
+    },
+    star: {
+      situation:
+        'Bored Ape Yacht Club community needed a comprehensive leaderboard to track Dookey Dash game scores with real-time updates and tier-based rankings',
+      task: 'Build a full-stack web application displaying live game scores, tier rankings, and player statistics with automatic data updates',
+      action:
+        'Developed Next.js application with server-side rendering for performance, implemented Prisma ORM with database migrations, created real-time data fetching with automatic updates, built responsive UI with tier filtering and pagination',
+      result:
+        'Delivered production leaderboard deployed on Vercel providing real-time game rankings and statistics for the BAYC community during the Dookey Dash event',
+    },
+    technologies: [
+      'Next.js',
+      'React',
+      'JavaScript',
+      'Prisma',
+      'CSS Modules',
+      'Vercel',
+    ],
+    links: {
+      live: 'https://dookey-dash-bored.vercel.app',
+      github: 'https://github.com/brownjer3/dookey-leaderboard',
+    },
+    category: 'web',
+  },
+  {
+    id: 'nft-drop-cal-v2',
+    title: 'NFT Drop Calendar v2',
+    subtitle: 'Enhanced NFT release tracking platform',
+    period: 'November 2022',
+    status: 'archived',
+    featured: false,
+    metrics: {
+      impact: 'NFT community tool',
+      scale: 'Multi-version iterations',
+    },
+    star: {
+      situation:
+        'NFT collectors needed improved tracking system for upcoming releases with better UX and more comprehensive data',
+      task: 'Rebuild NFT drop calendar with enhanced features, better performance, and improved user experience',
+      action:
+        'Developed React-based calendar application with enhanced UI/UX, implemented advanced filtering and search capabilities, added comprehensive drop information and notifications',
+      result:
+        'Delivered improved NFT tracking tool with better user experience during peak NFT market activity',
+    },
+    technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'Web3'],
+    links: {
+      github: 'https://github.com/brownjer3/nft-drop-cal-v2',
+    },
+    category: 'web',
+  },
+  {
+    id: 'nft-portfolio',
+    title: 'NFT Portfolio Dashboard',
+    subtitle: 'Ethereum wallet NFT viewer with Alchemy integration',
+    period: 'November 2022',
+    status: 'archived',
+    featured: false,
+    metrics: {
+      impact: 'Web3 portfolio tool',
+      scale: 'Ethereum mainnet',
+      performance: 'Infinite scrolling',
+    },
+    star: {
+      situation:
+        'Hologram Labs needed a technical assessment showcasing ability to build Web3 applications with wallet connectivity and blockchain data visualization',
+      task: 'Create React webpage allowing users to connect Ethereum wallet and view their NFT collection in an organized grid layout',
+      action:
+        'Built Next.js application with web3.js wallet integration, implemented Alchemy API for NFT data retrieval, created responsive grid layout with React Bootstrap, added infinite scrolling functionality for large collections',
+      result:
+        'Delivered complete NFT portfolio viewer meeting all requirements with clean UI, wallet connection, and efficient NFT display capabilities',
+    },
+    technologies: [
+      'React',
+      'Next.js',
+      'Web3.js',
+      'Alchemy API',
+      'React Bootstrap',
+      'JavaScript',
+    ],
+    links: {
+      github: 'https://github.com/brownjer3/nft-portfolio',
     },
     category: 'web',
   },
@@ -253,7 +419,7 @@ export const projects: Project[] = [
     id: 'cadence-tunes-v2',
     title: 'Cadence Tunes',
     subtitle: 'Running playlist generator based on cadence',
-    period: '2021',
+    period: 'December 2021',
     status: 'archived',
     featured: false,
     metrics: {
@@ -272,32 +438,6 @@ export const projects: Project[] = [
     technologies: ['JavaScript', 'Ruby', 'Rails', 'Spotify API', 'HTML', 'CSS'],
     links: {
       github: 'https://github.com/brownjer3/cadence-tunes-v2',
-    },
-    category: 'web',
-  },
-  {
-    id: 'nft-drop-cal-v2',
-    title: 'NFT Drop Calendar v2',
-    subtitle: 'Enhanced NFT release tracking platform',
-    period: 'November 2022',
-    status: 'archived',
-    featured: false,
-    metrics: {
-      impact: 'NFT community tool',
-      scale: 'Multi-version iterations',
-    },
-    star: {
-      situation:
-        'NFT collectors needed improved tracking system for upcoming releases with better UX and more comprehensive data',
-      task: 'Rebuild NFT drop calendar with enhanced features, better performance, and improved user experience',
-      action:
-        'Developed React-based calendar application with enhanced UI/UX, implemented advanced filtering and search capabilities, added comprehensive drop information and notifications',
-      result:
-        'Delivered improved NFT tracking tool with better user experience during peak NFT market activity',
-    },
-    technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'Web3'],
-    links: {
-      github: 'https://github.com/brownjer3/nft-drop-cal-v2',
     },
     category: 'web',
   },
