@@ -3,40 +3,20 @@
 import { Button } from '@/components/ui/button'
 import { ArrowDown, Download } from 'lucide-react'
 import Link from 'next/link'
-import * as React from 'react'
+import { useGitHubStats } from '@/lib/hooks/use-github-stats'
 
 interface HeroStat {
   value: string
   label: string
+  isLoading?: boolean
 }
 
 export function HeroSection() {
-  const [githubCommits, setGithubCommits] = React.useState<string>('2.5K+')
-
-  React.useEffect(() => {
-    const fetchGitHubStats = async () => {
-      try {
-        const response = await fetch('/api/github/stats')
-        if (response.ok) {
-          const data = await response.json()
-          // Format the number nicely
-          if (data.totalCommits >= 1000) {
-            setGithubCommits(`${(data.totalCommits / 1000).toFixed(1)}K+`)
-          } else {
-            setGithubCommits(`${data.totalCommits}+`)
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch GitHub stats:', error)
-      }
-    }
-
-    fetchGitHubStats()
-  }, [])
+  const { commits, isLoading } = useGitHubStats()
 
   const stats: HeroStat[] = [
     { value: '10+', label: 'Years in Tech' },
-    { value: githubCommits, label: 'GitHub Commits' },
+    { value: commits, label: 'GitHub Commits', isLoading },
   ]
   return (
     <section
@@ -86,7 +66,13 @@ export function HeroSection() {
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl font-bold sm:text-4xl">
-                  {stat.value}
+                  {stat.isLoading ? (
+                    <span className="inline-block animate-pulse rounded bg-muted px-8 py-2">
+                      &nbsp;
+                    </span>
+                  ) : (
+                    stat.value
+                  )}
                 </div>
                 <div className="text-sm text-muted-foreground">
                   {stat.label}

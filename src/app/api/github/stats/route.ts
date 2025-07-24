@@ -7,24 +7,198 @@ interface GitHubStats {
   following: number
 }
 
+const GITHUB_GRAPHQL_API = 'https://api.github.com/graphql'
+
+interface UserInfoResponse {
+  data: {
+    user: {
+      createdAt: string
+      repositories: {
+        totalCount: number
+      }
+      followers: {
+        totalCount: number
+      }
+      following: {
+        totalCount: number
+      }
+    }
+  }
+}
+
+interface ContributionsResponse {
+  data: {
+    user: {
+      contributionsCollection: {
+        totalCommitContributions: number
+        totalIssueContributions: number
+        totalPullRequestContributions: number
+        totalPullRequestReviewContributions: number
+      }
+    }
+  }
+}
+
 export async function GET() {
   try {
     const username = 'brownjer3'
     const token = process.env.GITHUB_TOKEN
 
-    const headers: HeadersInit = {
-      'Accept': 'application/vnd.github.v3+json',
+    if (!token) {
+      // If no token, fall back to REST API with limited data
+      return await fetchWithRestAPI(username)
     }
 
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`
-    }
+    // First, get user info including account creation date
+    const userInfoQuery = `
+      query($username: String!) {
+        user(login: $username) {
+          createdAt
+          repositories {
+            totalCount
+          }
+          followers {
+            totalCount
+          }
+          following {
+            totalCount
+          }
+        }
+      }
+    `
 
-    // Fetch user data
-    const userResponse = await fetch(`https://api.github.com/users/${username}`, {
-      headers,
-      next: { revalidate: 3600 } // Cache for 1 hour
+    const userInfoResponse = await fetch(GITHUB_GRAPHQL_API, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: userInfoQuery,
+        variables: { username },
+      }),
+      next: { revalidate: 3600 }, // Cache for 1 hour
     })
+
+    if (!userInfoResponse.ok) {
+      throw new Error(
+        `GitHub GraphQL API responded with ${userInfoResponse.status}`
+      )
+    }
+
+    const userInfo = (await userInfoResponse.json()) as UserInfoResponse
+
+    if (!userInfo.data?.user) {
+      throw new Error('Invalid response from GitHub GraphQL API')
+    }
+
+    const user = userInfo.data.user
+    const accountCreatedAt = new Date(user.createdAt)
+    const currentDate = new Date()
+
+    // Calculate the years since account creation
+    const yearsSinceCreation =
+      currentDate.getFullYear() - accountCreatedAt.getFullYear()
+
+    // Query contributions for each year
+    let totalCommits = 0
+    const contributionsQuery = `
+      query($username: String!, $from: DateTime!, $to: DateTime!) {
+        user(login: $username) {
+          contributionsCollection(from: $from, to: $to) {
+            totalCommitContributions
+            totalIssueContributions
+            totalPullRequestContributions
+            totalPullRequestReviewContributions
+          }
+        }
+      }
+    `
+
+    // Fetch contributions year by year
+    for (let i = 0; i <= yearsSinceCreation; i++) {
+      const yearStart = new Date(
+        accountCreatedAt.getFullYear() + i,
+        accountCreatedAt.getMonth(),
+        accountCreatedAt.getDate()
+      )
+      const yearEnd = new Date(
+        yearStart.getFullYear() + 1,
+        yearStart.getMonth(),
+        yearStart.getDate()
+      )
+
+      // Don't query beyond current date
+      if (yearStart > currentDate) break
+
+      const actualYearEnd = yearEnd > currentDate ? currentDate : yearEnd
+
+      try {
+        const contributionsResponse = await fetch(GITHUB_GRAPHQL_API, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            query: contributionsQuery,
+            variables: {
+              username,
+              from: yearStart.toISOString(),
+              to: actualYearEnd.toISOString(),
+            },
+          }),
+        })
+
+        if (contributionsResponse.ok) {
+          const contributionsData =
+            (await contributionsResponse.json()) as ContributionsResponse
+          if (contributionsData.data?.user?.contributionsCollection) {
+            totalCommits +=
+              contributionsData.data.user.contributionsCollection
+                .totalCommitContributions
+          }
+        }
+      } catch (err) {
+        console.error(`Error fetching contributions for year ${i}:`, err)
+      }
+    }
+
+    const stats: GitHubStats = {
+      totalCommits,
+      totalRepos: user.repositories.totalCount,
+      followers: user.followers.totalCount,
+      following: user.following.totalCount,
+    }
+
+    return NextResponse.json(stats)
+  } catch (error) {
+    console.error('Error fetching GitHub stats:', error)
+
+    // Return minimal fallback data - let the client use cached values
+    return NextResponse.json({
+      totalCommits: 0,
+      totalRepos: 0,
+      followers: 0,
+      following: 0,
+    })
+  }
+}
+
+// Fallback function using REST API when no token is available
+async function fetchWithRestAPI(username: string) {
+  try {
+    const headers: HeadersInit = {
+      Accept: 'application/vnd.github.v3+json',
+    }
+
+    const userResponse = await fetch(
+      `https://api.github.com/users/${username}`,
+      {
+        headers,
+        next: { revalidate: 3600 },
+      }
+    )
 
     if (!userResponse.ok) {
       throw new Error(`GitHub API responded with ${userResponse.status}`)
@@ -32,64 +206,25 @@ export async function GET() {
 
     const userData = await userResponse.json()
 
-    // Fetch all repos to calculate total commits
-    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
-      headers,
-      next: { revalidate: 3600 }
-    })
-
-    if (!reposResponse.ok) {
-      throw new Error(`GitHub API responded with ${reposResponse.status}`)
-    }
-
-    await reposResponse.json() // We fetch repos but don't use them directly
-
-    // Calculate total commits across all repos
-    // Note: This is an approximation. For exact counts, we'd need to iterate through each repo's commits
-    // which would hit rate limits quickly. Instead, we'll use the user's contribution data
-    
-    // Fetch contribution data
-    const contributionsResponse = await fetch(
-      `https://api.github.com/users/${username}/events/public?per_page=100`,
-      {
-        headers,
-        next: { revalidate: 3600 }
-      }
-    )
-
-    let totalCommits = 0
-    
-    if (contributionsResponse.ok) {
-      const events = await contributionsResponse.json()
-      // Count push events as a proxy for commits
-      const pushEvents = events.filter((event: { type: string }) => event.type === 'PushEvent')
-      totalCommits = pushEvents.reduce((acc: number, event: { payload?: { commits?: { length: number } } }) => {
-        return acc + (event.payload?.commits?.length || 0)
-      }, 0)
-    }
-
-    // Add a baseline estimate for historical commits (conservative estimate)
-    // Based on your 5+ years of experience
-    const estimatedHistoricalCommits = 2000
-    totalCommits += estimatedHistoricalCommits
-
+    // With REST API, we can only get limited data
+    // Return actual data without estimates - let client use cached values
     const stats: GitHubStats = {
-      totalCommits,
+      totalCommits: 0, // No commit data available without token
       totalRepos: userData.public_repos,
       followers: userData.followers,
-      following: userData.following
+      following: userData.following,
     }
 
     return NextResponse.json(stats)
   } catch (error) {
-    console.error('Error fetching GitHub stats:', error)
-    
-    // Return fallback data
+    console.error('Error fetching from REST API:', error)
+
+    // Return zeros to let client use cached values
     return NextResponse.json({
-      totalCommits: 2500, // Fallback estimate
-      totalRepos: 38,
+      totalCommits: 0,
+      totalRepos: 0,
       followers: 0,
-      following: 0
+      following: 0,
     })
   }
 }
